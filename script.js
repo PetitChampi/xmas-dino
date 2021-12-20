@@ -13,6 +13,7 @@ const startScreenElem = document.querySelector("[data-start-screen")
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
 document.addEventListener("keydown", handleStart, { once: true })
+document.addEventListener("mousedown", handleStart, { once: true })
 
 setupGround()
 
@@ -76,6 +77,7 @@ function handleLose() {
   setDinoLose()
   setTimeout(() => {
     document.addEventListener("keydown", handleStart, { once: true })
+    document.addEventListener("mousedown", handleStart, { once: true })
     startScreenElem.classList.remove("hide")
   }, 100)
 }
