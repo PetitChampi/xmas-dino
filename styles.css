@@ -50,11 +50,21 @@ body {
   left: 1%;
   height: 30%;
   bottom: calc(var(--bottom) * 1%);
+  background-color: pink;
 }
 
 .cactus {
   position: absolute;
   left: calc(var(--left) * 1%);
   height: 30%;
-  bottom: 0;
+  bottom: 20%;
+  background-color: greenyellow;
+}
+
+.ptero {
+  position: absolute;
+  left: calc(var(--left) * 1%);
+  height: 30%;
+  bottom: 20%;
+  background-color: orange;
 }

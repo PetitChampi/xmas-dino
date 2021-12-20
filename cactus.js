@@ -2,7 +2,7 @@ import { setCustomProperty, getCustomProperty, incrementCustomProperty } from ".
 
 // Has to be the same speed as the ground
 const SPEED = .05
-const CACTUS_INTERVAL_MIN = 500
+const CACTUS_INTERVAL_MIN = 700
 const CACTUS_INTERVAL_MAX = 2000
 const worldElem = document.querySelector("[data-world")
 
