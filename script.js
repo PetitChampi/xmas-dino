@@ -1,6 +1,6 @@
 import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
-import { setupCactus, updateCactus, getCactusRects } from "./cactus.js"
+import { setupObstacle, updateCactus, getCactusRects } from "./cactus.js"
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -68,7 +68,7 @@ function handleStart() {
   score = 0
   setupGround()
   setupDino()
-  setupCactus()
+  setupObstacle()
   startScreenElem.classList.add("hide")
   window.requestAnimationFrame(update)
 }
