@@ -7,11 +7,21 @@ const GRAVITY = .0015
 const DINO_FRAME_COUNT = 2
 const FRAME_TIME = 100
 
+const jumpElem = document.querySelector("[data-jump]")
+const duckElem = document.querySelector("[data-duck]")
+
+jumpElem.addEventListener("click", onJump)
+duckElem.addEventListener("mousedown", onDuck)
+duckElem.addEventListener("mouseup", onDuck)
+duckElem.addEventListener("touchstart", onDuck)
+duckElem.addEventListener("touchend", onDuck)
+
 let isJumping
 let isDucking
 let dinoFrame
 let currentFrameTime
 let yVelocity
+
 export function setupDino() {
   isJumping = false
   isDucking = false
@@ -73,16 +83,10 @@ function handleJump(delta) {
   yVelocity -= GRAVITY * delta
 }
 
-// function handleDuck() {
-//   if (!isDucking) return
-
-// }
-
 function onJump(e) {
   if ((e.code !== "Space" &&
       e.code !== "ArrowUp" &&
-      e.type !== "touchstart" &&
-      e.type !== "mousedown") ||
+      e.target !== jumpElem) ||
       isJumping ||
       isDucking) return
 
@@ -91,13 +95,19 @@ function onJump(e) {
 }
 
 function onDuck(e) {
-  if (e.code !== "ArrowDown" || isJumping) return
+  if ((e.code !== "ArrowDown" &&
+      e.target !== duckElem) ||
+      isJumping) return
 
-  if (e.type == "keydown") {
+  if (e.type == "keydown" ||
+      e.type == "mousedown" ||
+      e.type == "touchstart") {
     setCustomProperty(dinoElem, "--bottom", -11)
     isDucking = true
   }
-  if (e.type == "keyup") {
+  if (e.type == "keyup" ||
+      e.type == "mouseup" ||
+      e.type == "touchend") {
     setCustomProperty(dinoElem, "--bottom", 0)
     isDucking = false
   }

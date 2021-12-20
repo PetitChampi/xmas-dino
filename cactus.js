@@ -10,25 +10,16 @@ let nextObstacleTime
 export function setupObstacle() {
   nextObstacleTime = OBSTACLE_INTERVAL_MIN
   // remove all obstacles already on screen after lost game
-  document.querySelectorAll("[data-cactus]").forEach(cactus => {
-    cactus.remove()
-  })
-  document.querySelectorAll("[data-ptero]").forEach(ptero => {
-    ptero.remove()
+  document.querySelectorAll("[data-obstacle]").forEach(obs => {
+    obs.remove()
   })
 }
 
-export function updateCactus(delta, speedScale) {
-  document.querySelectorAll("[data-cactus]").forEach(cactus => {
+export function updateObstacle(delta, speedScale) {
+  document.querySelectorAll("[data-obstacle]").forEach(cactus => {
     incrementCustomProperty(cactus, "--left", delta * speedScale * SPEED * -1)
     if (getCustomProperty(cactus, "--left") <= -100) {
       cactus.remove()
-    }
-  })
-  document.querySelectorAll("[data-ptero]").forEach(ptero => {
-    incrementCustomProperty(ptero, "--left", delta * speedScale * SPEED * -1)
-    if (getCustomProperty(ptero, "--left") <= -100) {
-      ptero.remove()
     }
   })
 

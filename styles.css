@@ -9,6 +9,7 @@ body {
   justify-content: center;
   align-items: center;
   min-height: 100vh;
+  position: relative;
 }
 
 .world {
@@ -21,6 +22,20 @@ body {
   font-size: 3vmin;
   right: 1vmin;
   top: 1vmin;
+}
+
+.controls {
+  position: absolute;
+  bottom: 5vh;
+  font-size: 20px;
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  padding: 0 10vw;
+}
+.btn {
+  background-color: rgba(0, 0, 0, .2);
+  padding: 15px 20px;
 }
 
 .start-screen {
@@ -50,7 +65,6 @@ body {
   left: 1%;
   height: 30%;
   bottom: calc(var(--bottom) * 1%);
-  background-color: pink;
 }
 
 .cactus {
@@ -58,7 +72,6 @@ body {
   left: calc(var(--left) * 1%);
   height: 30%;
   bottom: 0;
-  background-color: greenyellow;
 }
 
 .ptero {
@@ -66,5 +79,4 @@ body {
   left: calc(var(--left) * 1%);
   height: 30%;
   bottom: 20%;
-  background-color: orange;
 }

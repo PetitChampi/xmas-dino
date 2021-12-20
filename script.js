@@ -1,6 +1,6 @@
 import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
-import { setupObstacle, updateCactus, getObstacleRects } from "./cactus.js"
+import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -9,6 +9,7 @@ const SPEED_SCALE_INCREASE = 0.00001
 const worldElem = document.querySelector("[data-world")
 const scoreElem = document.querySelector("[data-score")
 const startScreenElem = document.querySelector("[data-start-screen")
+const controlsElem = document.querySelector("[data-controls")
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
@@ -30,7 +31,7 @@ function update(time) {
 
   updateGround(delta, speedScale)
   updateDino(delta, speedScale)
-  updateCactus(delta, speedScale)
+  updateObstacle(delta, speedScale)
   updateSpeedScale(delta)
   updateScore(delta)
   if (checkLose()) return handleLose()
@@ -79,7 +80,7 @@ function handleLose() {
     document.addEventListener("keydown", handleStart, { once: true })
     document.addEventListener("mousedown", handleStart, { once: true })
     startScreenElem.classList.remove("hide")
-  }, 100)
+  }, 50)
 }
 
 function setPixelToWorldScale() {
