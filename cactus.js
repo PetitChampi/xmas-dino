@@ -39,26 +39,23 @@ export function updateCactus(delta, speedScale) {
   nextObstacleTime -= delta
 }
 
-export function getCactusRects() {
-  return [...document.querySelectorAll("[data-cactus]")].map(cactus => {
-    return cactus.getBoundingClientRect()
-  })
-}
-export function getPteroRects() {
-  return [...document.querySelectorAll("[data-ptero]")].map(ptero => {
-    return ptero.getBoundingClientRect()
+export function getObstacleRects() {
+  return [...document.querySelectorAll("[data-obstacle]")].map(obs => {
+    return obs.getBoundingClientRect()
   })
 }
 
 function createObstacle() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
+  cactus.dataset.obstacle = true
   cactus.src = "imgs/cactus.png"
   cactus.classList.add("cactus")
   setCustomProperty(cactus, "--left", 100)
 
   const ptero = document.createElement("img")
   ptero.dataset.ptero = true
+  ptero.dataset.obstacle = true
   ptero.src = "imgs/cactus.png"
   ptero.classList.add("ptero")
   setCustomProperty(ptero, "--left", 100)

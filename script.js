@@ -1,6 +1,6 @@
 import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
-import { setupObstacle, updateCactus, getCactusRects } from "./cactus.js"
+import { setupObstacle, updateCactus, getObstacleRects } from "./cactus.js"
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -41,7 +41,7 @@ function update(time) {
 
 function checkLose() {
   const dinoRect = getDinoRect()
-  return getCactusRects().some(rect => isCollision(rect, dinoRect))
+  return getObstacleRects().some(rect => isCollision(rect, dinoRect))
 }
 
 function isCollision(rect1, rect2) {
