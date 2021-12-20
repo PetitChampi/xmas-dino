@@ -14,6 +14,7 @@ const controlsElem = document.querySelector("[data-controls")
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
 document.addEventListener("keydown", handleStart, { once: true })
+document.addEventListener("touchstart", handleStart, { once: true })
 document.addEventListener("mousedown", handleStart, { once: true })
 
 setupGround()
@@ -63,7 +64,7 @@ function updateScore(delta) {
   scoreElem.textContent = Math.floor(score)
 }
 
-function handleStart() {
+function handleStart(e) {
   lastTime = null
   speedScale = 1
   score = 0
@@ -71,6 +72,7 @@ function handleStart() {
   setupDino()
   setupObstacle()
   startScreenElem.classList.add("hide")
+  if (e.type == "touchstart") controlsElem.classList.remove("hide")
   window.requestAnimationFrame(update)
 }
 
@@ -78,6 +80,7 @@ function handleLose() {
   setDinoLose()
   setTimeout(() => {
     document.addEventListener("keydown", handleStart, { once: true })
+    document.addEventListener("touchstart", handleStart, { once: true })
     document.addEventListener("mousedown", handleStart, { once: true })
     startScreenElem.classList.remove("hide")
   }, 50)
