@@ -72,7 +72,19 @@ function handleStart(e) {
   setupDino()
   setupObstacle()
   startScreenElem.classList.add("hide")
-  if (e.type == "touchstart") controlsElem.classList.remove("hide")
+  if (e.type == "touchstart") {
+    controlsElem.classList.remove("hide")
+    document.removeEventListener("keydown", handleStart)
+    document.removeEventListener("mousedown", handleStart)
+  }
+  if (e.type == "mousedown") {
+    document.removeEventListener("touchstart", handleStart)
+    document.removeEventListener("keydown", handleStart)
+  }
+  if (e.type == "keydown") {
+    document.removeEventListener("touchstart", handleStart)
+    document.removeEventListener("mousedown", handleStart)
+  }
   window.requestAnimationFrame(update)
 }
 
