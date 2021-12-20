@@ -83,6 +83,7 @@ function handleLose() {
     document.addEventListener("touchstart", handleStart, { once: true })
     document.addEventListener("mousedown", handleStart, { once: true })
     startScreenElem.classList.remove("hide")
+    if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
   }, 50)
 }
 
