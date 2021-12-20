@@ -1,6 +1,7 @@
 *, *::before, *::after {
   box-sizing: border-box;
   user-select: none;
+  -webkit-user-select: none;
 }
 
 body {
@@ -36,6 +37,7 @@ body {
 .btn {
   background-color: rgba(0, 0, 0, .2);
   padding: 15px 20px;
+  user-select: none;
 }
 
 .start-screen {
