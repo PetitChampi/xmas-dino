@@ -12,12 +12,14 @@ const startScreenElem = document.querySelector("[data-start-screen")
 const endScreenElem = document.querySelector("[data-end-screen")
 const scoreLineElem = document.querySelector("[data-score-line")
 const controlsElem = document.querySelector("[data-controls")
+const restartElem = document.querySelector("[data-restart")
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
 document.addEventListener("keydown", handleStart, { once: true })
 document.addEventListener("touchstart", handleStart, { once: true })
 document.addEventListener("mousedown", handleStart, { once: true })
+restartElem.addEventListener("click", handleStart)
 controlsElem.addEventListener("touchstart", e => e.preventDefault())
 
 setupGround()
@@ -98,9 +100,9 @@ function handleStart(e) {
 function handleLose() {
   setDinoLose()
   setTimeout(() => {
-    document.addEventListener("keydown", handleStart, { once: true })
-    document.addEventListener("touchstart", handleStart, { once: true })
-    document.addEventListener("mousedown", handleStart, { once: true })
+    // document.addEventListener("keydown", handleStart, { once: true })
+    // document.addEventListener("touchstart", handleStart, { once: true })
+    // document.addEventListener("mousedown", handleStart, { once: true })
     scoreLineElem.innerText = Math.floor(score)
     endScreenElem.classList.remove("hide")
     if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
