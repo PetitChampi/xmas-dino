@@ -9,6 +9,8 @@ const SPEED_SCALE_INCREASE = 0.00001
 const worldElem = document.querySelector("[data-world")
 const scoreElem = document.querySelector("[data-score")
 const startScreenElem = document.querySelector("[data-start-screen")
+const endScreenElem = document.querySelector("[data-end-screen")
+const scoreLineElem = document.querySelector("[data-score-line")
 const controlsElem = document.querySelector("[data-controls")
 
 setPixelToWorldScale()
@@ -72,6 +74,7 @@ function handleStart(e) {
   setupDino()
   setupObstacle()
   startScreenElem.classList.add("hide")
+  if (!endScreenElem.classList.contains("hide")) endScreenElem.classList.add("hide")
   if (e.type == "touchstart") {
     controlsElem.classList.remove("hide")
     document.removeEventListener("keydown", handleStart)
@@ -94,7 +97,8 @@ function handleLose() {
     document.addEventListener("keydown", handleStart, { once: true })
     document.addEventListener("touchstart", handleStart, { once: true })
     document.addEventListener("mousedown", handleStart, { once: true })
-    startScreenElem.classList.remove("hide")
+    scoreLineElem.innerText = Math.floor(score)
+    endScreenElem.classList.remove("hide")
     if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
   }, 50)
 }
