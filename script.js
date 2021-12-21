@@ -81,6 +81,9 @@ function handleStart(e) {
     document.removeEventListener("mousedown", handleStart)
   }
   if (e.type == "mousedown") {
+    document.addEventListener("touchend", () => {
+      if (controlsElem.classList.contains("hide")) controlsElem.classList.remove("hide")
+    })
     document.removeEventListener("touchstart", handleStart)
     document.removeEventListener("keydown", handleStart)
   }
