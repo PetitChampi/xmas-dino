@@ -14,6 +14,10 @@ body {
   position: relative;
 }
 
+.score-body {
+  flex-direction: column;
+}
+
 .world {
   overflow: hidden;
   position: relative;
@@ -96,14 +100,14 @@ body {
   color: brown;
 }
 
-.scores {
+.scoreboard {
   border-collapse: collapse;
 }
-.scores th,
-.scores td {
+.scoreboard th,
+.scoreboard td {
   border: 1px solid gray;
   padding: 5px 10px;
 }
-.scores th {
+.scoreboard th {
   background-color: linen;
 }

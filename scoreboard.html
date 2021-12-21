@@ -7,8 +7,8 @@
   <title>Score boards</title>
   <link rel="stylesheet" href="css/game.css">
 </head>
-<body>
-  <table class="scores" data-scoreboard>
+<body class="score-body">
+  <table class="scoreboard" data-scoreboard>
     <thead>
       <tr>
         <th>nickname</th>
@@ -23,6 +23,8 @@
       </tr>
     </tbody>
   </table>
+  <br>
+  <a href="game.html">Back to game</a>
 
   <script>
     const scoreboardBody = document.querySelector("[data-scoreboard-body]")
@@ -30,7 +32,7 @@
     // call ajax
     let ajax = new XMLHttpRequest()
     let method = "GET"
-    let url = "data.php"
+    let url = "php/leaderboard.php"
     let asynchronous = true
 
     ajax.open(method, url, asynchronous)

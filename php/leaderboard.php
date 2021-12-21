@@ -1,10 +1,9 @@
 <?php
 
-// getting data from database
-$conn = mysqli_connect("localhost", "root", "", "dinogame");
+include "db.php";
 
 // getting data from scores table
-$result = mysqli_query($conn, "SELECT * FROM scores");
+$result = mysqli_query($conn, "SELECT * FROM scores ORDER BY score DESC LIMIT 10");
 
 // storing data in array
 $data = array();
