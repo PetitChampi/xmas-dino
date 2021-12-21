@@ -18,6 +18,7 @@ window.addEventListener("resize", setPixelToWorldScale)
 document.addEventListener("keydown", handleStart, { once: true })
 document.addEventListener("touchstart", handleStart, { once: true })
 document.addEventListener("mousedown", handleStart, { once: true })
+controlsElem.addEventListener("touchstart", e => e.preventDefault())
 
 setupGround()
 
