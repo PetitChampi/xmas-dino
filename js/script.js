@@ -85,7 +85,7 @@ function handleStart(e) {
   }
   if (e.type == "mousedown") {
     document.addEventListener("touchend", () => {
-      controlsElem.classList.remove("hide")
+      if (controlsElem.classList.contains("hide")) controlsElem.classList.remove("hide")
     })
     document.removeEventListener("touchstart", handleStart)
     document.removeEventListener("keydown", handleStart)
@@ -102,7 +102,7 @@ function handleLose() {
   setTimeout(() => {
     scoreLineElem.innerText = Math.floor(score)
     endScreenElem.classList.remove("hide")
-    controlsElem.classList.add("hide")
+    if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
   }, 50)
 }
 
