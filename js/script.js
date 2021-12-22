@@ -2,6 +2,10 @@ import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
 import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
 
+const nickname = localStorage.getItem("nickname")
+const avatar = localStorage.getItem("avatar")
+console.log(nickname + " " + avatar)
+
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
 const SPEED_SCALE_INCREASE = 0.00001
@@ -105,6 +109,9 @@ function handleLose() {
     endScreenElem.classList.remove("hide")
     if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
   }, 50)
+  // TODO add ajax to write score in database
+
+  // end todo
 }
 
 function setPixelToWorldScale() {
