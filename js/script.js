@@ -1,10 +1,10 @@
-const nickname = localStorage.getItem("nickname")
-const avatar = localStorage.getItem("avatar")
-console.log(nickname + " " + avatar)
-
 import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
 import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
+
+const nickname = localStorage.getItem("nickname")
+const avatar = localStorage.getItem("avatar")
+console.log(nickname + " " + avatar)
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
@@ -105,13 +105,22 @@ function handleStart(e) {
 function handleLose() {
   setDinoLose()
   setTimeout(() => {
-    scoreLineElem.innerText = Math.floor(score)
+    scoreLineElem.innerText = `${nickname}'s score: ${Math.floor(score)}`
     endScreenElem.classList.remove("hide")
     if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
   }, 50)
-  // TODO add ajax to write score in database
+  
+  // call ajax
+  let data = { nickname: nickname, score: Math.floor(score), avatar: avatar }
+  data = JSON.stringify(data)
+  let ajax = new XMLHttpRequest()
+  let method = "POST"
+  let url = "php/register-score.php"
+  let asynchronous = true
 
-  // end todo
+  ajax.open(method, url, asynchronous)
+  ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+  ajax.send(data)
 }
 
 function setPixelToWorldScale() {

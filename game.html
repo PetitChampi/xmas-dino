@@ -26,9 +26,12 @@
     <div class="end-screen hide" data-end-screen>
       <div>GAME OVER</div>
       <small>
-        <div>You just scored <span data-score-line></span></div>
+        <div><span data-score-line></span></div>
         <a href="scoreboard.html">see scoreboard</a>
-        <div class="replay" data-restart>Play again</div>
+        <div style="display: flex; justify-content: space-between; gap: 1em; margin-top: 2vmin;">
+          <div class="replay" data-restart>New run</div>
+          <a href="index.html">New game</a>
+        </div>
       </small>
     </div>
     <img src="imgs/ground.png" class="ground" data-ground>
