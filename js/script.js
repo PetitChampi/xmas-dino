@@ -1,10 +1,10 @@
-import { setupGround, updateGround } from "./ground.js"
-import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
-import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
-
 const nickname = localStorage.getItem("nickname")
 const avatar = localStorage.getItem("avatar")
 console.log(nickname + " " + avatar)
+
+import { setupGround, updateGround } from "./ground.js"
+import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
+import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30

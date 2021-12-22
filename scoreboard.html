@@ -32,7 +32,7 @@
     // call ajax
     let ajax = new XMLHttpRequest()
     let method = "GET"
-    let url = "php/leaderboard.php"
+    let url = "php/scoreboard.php"
     let asynchronous = true
 
     ajax.open(method, url, asynchronous)
@@ -57,7 +57,7 @@
           // appending to HTML
           html += "<tr>"
           html += `<td>${nickname}</td>`
-          html += `<td>${character}</td>`
+          html += `<td><img style="object-fit:contain; height:30px; width:100%; text-align:center;" src="imgs/${character}/dino-stationary.png""></td>`
           html += `<td>${score}</td>`
           html += `<td>${date}</td>`
           html += "</tr>"

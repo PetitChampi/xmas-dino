@@ -29,8 +29,12 @@
     let yellow = document.querySelector("[data-yellow]")
     let red = document.querySelector("[data-red]")
     let blue = document.querySelector("[data-blue]")
-    let nickname = ""
+    let nickname = input.value
     let avatar = blue
+
+    window.addEventListener('load', () => { 
+      nickname = input.value
+    })
 
     document.addEventListener("click", chooseAvatar)
 

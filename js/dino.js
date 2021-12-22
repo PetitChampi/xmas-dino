@@ -1,5 +1,7 @@
 import { incrementCustomProperty, getCustomProperty, setCustomProperty } from "./updateCustomProperty.js"
 
+const avatar = localStorage.getItem("avatar")
+
 const dinoElem = document.querySelector("[data-dino]")
 const JUMP_SPEED = .45
 const GRAVITY = .0015
@@ -10,6 +12,7 @@ const FRAME_TIME = 100
 const jumpElem = document.querySelector("[data-jump]")
 const duckElem = document.querySelector("[data-duck]")
 
+dinoElem.src = `imgs/${avatar}/dino-stationary.png`
 jumpElem.addEventListener("click", onJump)
 duckElem.addEventListener("mousedown", onDuck)
 duckElem.addEventListener("mouseup", onDuck)
@@ -53,18 +56,18 @@ export function getDinoRect() {
 }
 
 export function setDinoLose() {
-  dinoElem.src = "imgs/dino-lose.png"
+  dinoElem.src = `imgs/${avatar}/dino-lose.png`
 }
 
 function handleRun(delta, speedScale) {
   if (isJumping) {
-    dinoElem.src = `imgs/dino-stationary.png`
+    dinoElem.src = `imgs/${avatar}/dino-stationary.png`
     return
   }
 
   if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
-    dinoElem.src = `imgs/dino-run-${dinoFrame}.png`
+    dinoElem.src = `imgs/${avatar}/dino-run-${dinoFrame}.png`
     currentFrameTime -= FRAME_TIME
   }
   currentFrameTime += delta * speedScale
