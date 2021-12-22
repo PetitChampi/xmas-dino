@@ -85,7 +85,7 @@ function handleStart(e) {
   }
   if (e.type == "mousedown") {
     document.addEventListener("touchend", () => {
-      if (controlsElem.classList.contains("hide")) controlsElem.classList.remove("hide")
+      controlsElem.classList.remove("hide")
     })
     document.removeEventListener("touchstart", handleStart)
     document.removeEventListener("keydown", handleStart)
@@ -100,12 +100,9 @@ function handleStart(e) {
 function handleLose() {
   setDinoLose()
   setTimeout(() => {
-    // document.addEventListener("keydown", handleStart, { once: true })
-    // document.addEventListener("touchstart", handleStart, { once: true })
-    // document.addEventListener("mousedown", handleStart, { once: true })
     scoreLineElem.innerText = Math.floor(score)
     endScreenElem.classList.remove("hide")
-    if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
+    controlsElem.classList.add("hide")
   }, 50)
 }
 
