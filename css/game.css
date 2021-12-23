@@ -2,8 +2,11 @@
   box-sizing: border-box;
 }
 
-.game {
+body {
   margin: 0;
+}
+
+.game {
   display: flex;
   justify-content: center;
   align-items: center;
@@ -106,6 +109,9 @@
 }
 .scoreboard th {
   background-color: linen;
+}
+.score-highlighted {
+  background-color: burlywood;
 }
 
 .choose-avatar {

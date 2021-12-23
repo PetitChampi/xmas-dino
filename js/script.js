@@ -108,7 +108,6 @@ function handleStart(e) {
 
 function handleLose() {
   localStorage.setItem("score", Math.floor(score))
-  console.log(localStorage.getItem("score"))
   setDinoLose()
 
   if (score > highScore) {
@@ -121,6 +120,17 @@ function handleLose() {
     endScreenElem.classList.remove("hide")
     getScoreboard()
   }, 50)
+  // setTimeout(() => {
+  //   let scoreboardRows = Array.from(scoreboardBody.getElementsByTagName("tr"))
+  //   scoreboardRows.forEach(row => {
+  //     if (row.innerText.includes(nickname)
+  //     && row.innerText.includes(score)
+  //     && row.innerText.includes(avatar)) {
+  //       row.classList.add("score-highlighted")
+  //       console.log('added class')
+  //     }
+  //   })
+  // }, 60)
 }
 
 function setPixelToWorldScale() {
@@ -150,6 +160,12 @@ function postScore() {
   ajax.open(method, url, asynchronous)
   ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
   ajax.send(data)
+
+  // ajax.onreadystatechange = function() {
+  //   if (this.readyState == 4 && this.status == 200) {
+  //     console.log(this.responseText)
+  //   }
+  // }
 }
 
 function getScoreboard() {
