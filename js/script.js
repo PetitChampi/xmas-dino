@@ -4,7 +4,10 @@ import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
 
 const nickname = localStorage.getItem("nickname")
 const avatar = localStorage.getItem("avatar")
-console.log(nickname + " " + avatar)
+
+if (!nickname || !avatar) {
+  window.location.replace("index.html")
+}
 
 const WORLD_WIDTH = 100
 const WORLD_HEIGHT = 30
