@@ -1,5 +1,9 @@
+let nameScreen = document.querySelector("[data-name-screen]")
+let avtrScreen = document.querySelector("[data-avatar-screen]")
 let input = document.querySelector("[data-nickname]")
 let playBtn = document.querySelector("[data-play-btn]")
+let nextBtn = document.querySelector("[data-next-btn]")
+let changeNameBtn = document.querySelector("[data-change-name]")
 let nameError = document.querySelector("[data-noname]")
 let avatarElems = document.querySelectorAll(".avatar")
 let green = document.querySelector("[data-green]")
@@ -24,6 +28,18 @@ input.addEventListener('keydown', (e) => {
   if(['<','>'].indexOf(e.key) !== -1) {
     e.preventDefault()
   }
+})
+
+nextBtn.addEventListener("click", e => {
+  e.preventDefault()
+  avtrScreen.classList.remove('hide')
+  nameScreen.classList.add('hide')
+})
+
+changeNameBtn.addEventListener("click", e => {
+  e.preventDefault()
+  avtrScreen.classList.add('hide')
+  nameScreen.classList.remove('hide')
 })
 
 playBtn.addEventListener("click", e => {

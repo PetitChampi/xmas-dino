@@ -18,8 +18,12 @@
 </head>
 <body>
   <div class="game">
+    <div class="score">
+      <div>Score: <span data-score>0</span></div>
+      <div>High score: <span data-hiscore>0</span></div>
+    </div>
+
     <div class="world" data-world>
-      <div class="score" data-score>0</div>
       <div class="start-screen" data-start-screen>
         <div>Press any key or click to start</div>
         <div><small>Space / &UpArrow; : jump, &DownArrow; : duck</small></div>
@@ -31,28 +35,28 @@
     </div>
 
     <div class="end-screen hide" data-end-screen>
-      <div>GAME OVER</div>
-      <small>
+      <div data-end-screen-gameover>
+        <div>GAME OVER</div>
         <div><span data-score-line></span></div>
-        <div style="display: flex; justify-content: space-between; gap: 1em; margin-top: 2vmin;">
-          <div class="replay" data-restart>New run</div>
+        <div>
+          <div class="replay" data-view-scoreboard>View scoreboard</div>
+          <div class="replay" data-restart>Play again</div>
           <a href="select.html">New game</a>
+          <a href="">Share with friends</a>
         </div>
-      </small>
-      <table class="scoreboard" data-scoreboard>
-        <thead>
-          <tr>
-            <th>nickname</th>
-            <th>character</th>
-            <th>score</th>
-          </tr>
-        </thead>
-        <tbody data-scoreboard-body>
-          <tr>
-            <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td>
-          </tr>
-        </tbody>
-      </table>
+      </div>
+
+      <div data-end-screen-scoreboard class="hide">
+        <div data-close-board>close</div>
+        <table class="scoreboard" data-scoreboard>
+          <tbody data-scoreboard-body>
+            <tr>
+              <td colspan="4" style="color: gray; text-align:center;">Scoreboard will work with PHP</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="replay" data-restart>Play again</div>
+      </div>
     </div>
 
     <div class="controls hide" data-controls>

@@ -18,11 +18,16 @@ const SPEED_SCALE_INCREASE = 0.00001
 
 const worldElem = document.querySelector("[data-world")
 const scoreElem = document.querySelector("[data-score")
+const hiScoreElem = document.querySelector("[data-hiscore")
 const startScreenElem = document.querySelector("[data-start-screen")
 const endScreenElem = document.querySelector("[data-end-screen")
+const endScreenGameoverElem = document.querySelector("[data-end-screen-gameover")
+const endScreenBoardElem = document.querySelector("[data-end-screen-scoreboard")
 const scoreLineElem = document.querySelector("[data-score-line")
 const controlsElem = document.querySelector("[data-controls")
-const restartElem = document.querySelector("[data-restart")
+const restartElem = document.querySelectorAll("[data-restart")
+const closeBoardElem = document.querySelector("[data-close-board")
+const seeBoardElem = document.querySelector("[data-view-scoreboard")
 const scoreboardBody = document.querySelector("[data-scoreboard-body]")
 
 setPixelToWorldScale()
@@ -30,9 +35,19 @@ window.addEventListener("resize", setPixelToWorldScale)
 document.addEventListener("keydown", handleStart, { once: true })
 document.addEventListener("touchstart", handleStart, { once: true })
 document.addEventListener("mousedown", handleStart, { once: true })
-restartElem.addEventListener("touchstart", handleStart)
-restartElem.addEventListener("mousedown", handleStart)
+restartElem.forEach(elem => {
+  elem.addEventListener("touchstart", handleStart)
+  elem.addEventListener("mousedown", handleStart)
+})
 controlsElem.addEventListener("touchstart", e => e.preventDefault())
+seeBoardElem.addEventListener("click", () => {
+  endScreenBoardElem.classList.remove('hide')
+  endScreenGameoverElem.classList.add('hide')
+})
+closeBoardElem.addEventListener("click", () => {
+  endScreenBoardElem.classList.add('hide')
+  endScreenGameoverElem.classList.remove('hide')
+})
 
 setupGround()
 
@@ -118,6 +133,7 @@ function handleLose() {
   setTimeout(() => {
     scoreLineElem.innerText = `score: ${Math.floor(score)}\n high score: ${highScore}`
     endScreenElem.classList.remove("hide")
+    hiScoreElem.textContent = highScore
     getScoreboard()
   }, 50)
   // setTimeout(() => {
@@ -189,6 +205,7 @@ function getScoreboard() {
         let score = data[i].score
 
         html += "<tr>"
+        html += `<td>${i + 1}</td>`
         html += `<td>${nickname}</td>`
         html += `<td><img style="object-fit:contain; height:30px; width:100%; text-align:center;" src="imgs/${character}/${character}-stationary.png""></td>`
         html += `<td>${score}</td>`

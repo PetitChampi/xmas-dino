@@ -8,17 +8,27 @@
   <link rel="stylesheet" href="css/game.css">
 </head>
 <body class="score-body">
-  <label for="nickname">enter nickname</label>
-  <input type="text" name="nickname" id="nickname" data-nickname>
-  <span class="hide" style="color: red;" data-noname>gotta get a name bro</span>
-  <p>choose avatar</p>
-  <div class="choose-avatar">
-    <div class="avatar" data-reinier>reinier</div>
-    <div class="avatar" data-yellow></div>
-    <div class="avatar" data-green></div>
-    <div class="avatar" data-red></div>
+
+  <div class="name-screen" data-name-screen>
+    <h2>Pick a name</h2>
+    <label for="nickname">enter nickname</label>
+    <input type="text" name="nickname" id="nickname" data-nickname>
+    <span class="hide" style="color: red;" data-noname>gotta get a name bro</span>
+    <a href="" data-next-btn>Okay, next</a>
   </div>
-  <a href="" style="background-color: bisque; padding: 10px; margin-top: 30px;" data-play-btn>play</a>
+
+  <div class="avatar-screen hide" data-avatar-screen>
+    <h2>Hi {nickname}!</h2>
+    <p>Pick a character</p>
+    <div class="choose-avatar">
+      <div class="avatar" data-reinier>reinier</div>
+      <div class="avatar" data-yellow></div>
+      <div class="avatar" data-green></div>
+      <div class="avatar" data-red></div>
+    </div>
+    <a href="" data-play-btn>Start game</a>
+    <a href="" data-change-name>Change nickname</a>
+  </div>
 
   <script src="js/startScreen.js"></script>
 </body>

@@ -6,6 +6,8 @@ body {
   margin: 0;
 }
 
+/* game */
+
 .game {
   display: flex;
   justify-content: center;
@@ -71,9 +73,10 @@ body {
 
 .dino {
   --bottom: 0;
+  --height: 30;
   position: absolute;
   left: 1%;
-  height: 30%;
+  height: calc(var(--height) * 1%);
   bottom: calc(var(--bottom) * 1%);
 }
 
@@ -99,6 +102,8 @@ body {
   color: brown;
 }
 
+/* score board */
+
 .scoreboard {
   border-collapse: collapse;
 }
@@ -113,6 +118,8 @@ body {
 .score-highlighted {
   background-color: burlywood;
 }
+
+ /* select screen */
 
 .choose-avatar {
   display: grid;
