@@ -6,13 +6,13 @@ const dinoElem = document.querySelector("[data-dino]")
 const JUMP_SPEED = .45
 const GRAVITY = .0015
 // alternate the dino images
-const DINO_FRAME_COUNT = 2
-const FRAME_TIME = 100
+const DINO_FRAME_COUNT = 4
+const FRAME_TIME = 200
 
 const jumpElem = document.querySelector("[data-jump]")
 const duckElem = document.querySelector("[data-duck]")
 
-dinoElem.src = `imgs/${avatar}/dino-stationary.png`
+dinoElem.src = `imgs/${avatar}/${avatar}-stationary.png`
 jumpElem.addEventListener("click", onJump)
 duckElem.addEventListener("mousedown", onDuck)
 duckElem.addEventListener("mouseup", onDuck)
@@ -56,18 +56,18 @@ export function getDinoRect() {
 }
 
 export function setDinoLose() {
-  dinoElem.src = `imgs/${avatar}/dino-lose.png`
+  dinoElem.src = `imgs/${avatar}/${avatar}-lose.png`
 }
 
 function handleRun(delta, speedScale) {
   if (isJumping) {
-    dinoElem.src = `imgs/${avatar}/dino-stationary.png`
+    dinoElem.src = `imgs/${avatar}/${avatar}-stationary.png`
     return
   }
 
   if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
-    dinoElem.src = `imgs/${avatar}/dino-run-${dinoFrame}.png`
+    dinoElem.src = `imgs/${avatar}/${avatar}-run-${dinoFrame}.png`
     currentFrameTime -= FRAME_TIME
   }
   currentFrameTime += delta * speedScale

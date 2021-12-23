@@ -1,7 +1,6 @@
 import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
 import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
-import { getScoreboard } from "./ajax-scoreboard.js"
 
 const nickname = localStorage.getItem("nickname")
 const avatar = localStorage.getItem("avatar")
@@ -23,6 +22,7 @@ const endScreenElem = document.querySelector("[data-end-screen")
 const scoreLineElem = document.querySelector("[data-score-line")
 const controlsElem = document.querySelector("[data-controls")
 const restartElem = document.querySelector("[data-restart")
+const scoreboardBody = document.querySelector("[data-scoreboard-body]")
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
@@ -116,17 +116,7 @@ function handleLose() {
     if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
   }, 50)
   
-  // call ajax
-  let data = { nickname: nickname, score: Math.floor(score), avatar: avatar }
-  data = JSON.stringify(data)
-  let ajax = new XMLHttpRequest()
-  let method = "POST"
-  let url = "php/register-score.php"
-  let asynchronous = true
-
-  ajax.open(method, url, asynchronous)
-  ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-  ajax.send(data)
+  postScore()
 
   getScoreboard()
 }
@@ -141,4 +131,53 @@ function setPixelToWorldScale() {
 
   worldElem.style.width = `${WORLD_WIDTH * worldToPixelScale}px`
   worldElem.style.height = `${WORLD_HEIGHT * worldToPixelScale}px`
+}
+
+// AJAX ----------
+// AJAX ----------
+// AJAX ----------
+
+function postScore() {
+  let data = { nickname: nickname, score: Math.floor(score), avatar: avatar }
+  data = JSON.stringify(data)
+  let ajax = new XMLHttpRequest()
+  let method = "POST"
+  let url = "php/register-score.php"
+  let asynchronous = true
+
+  ajax.open(method, url, asynchronous)
+  ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
+  ajax.send(data)
+}
+
+function getScoreboard() {
+  let ajax = new XMLHttpRequest()
+  let method = "GET"
+  let url = "php/scoreboard.php"
+  let asynchronous = true
+
+  ajax.open(method, url, asynchronous)
+  ajax.send()
+
+  ajax.onreadystatechange = function() {
+    if (this.readyState == 4 && this.status == 200) {
+      let data = JSON.parse(this.responseText)
+
+      let html = ""
+      
+      for (let i = 0; i < data.length; i++) {
+        let nickname = data[i].nickname
+        let character = data[i].avatar
+        let score = data[i].score
+
+        html += "<tr>"
+        html += `<td>${nickname}</td>`
+        html += `<td><img style="object-fit:contain; height:30px; width:100%; text-align:center;" src="imgs/${character}/${character}-stationary.png""></td>`
+        html += `<td>${score}</td>`
+        html += "</tr>"
+      }
+
+      scoreboardBody.innerHTML = html
+    }
+  }
 }

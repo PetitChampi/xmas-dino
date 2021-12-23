@@ -5,9 +5,9 @@ let avatarElems = document.querySelectorAll(".avatar")
 let green = document.querySelector("[data-green]")
 let yellow = document.querySelector("[data-yellow]")
 let red = document.querySelector("[data-red]")
-let blue = document.querySelector("[data-blue]")
+let reinier = document.querySelector("[data-reinier]")
 let nickname = localStorage.getItem("nickname") || ""
-let avatar = localStorage.getItem("avatar") || "blue"
+let avatar = localStorage.getItem("avatar") || "reinier"
 
 input.value = nickname
 initAvatar(avatar)
@@ -38,8 +38,8 @@ function initAvatar(avtr) {
     case "green":
       avtr = green
       break
-    case "blue":
-      avtr = blue
+    case "reinier":
+      avtr = reinier
       break
     case "yellow":
       avtr = yellow
@@ -53,7 +53,7 @@ function initAvatar(avtr) {
 
 function chooseAvatar(e) {
   if (e.target != green &&
-  e.target != blue &&
+  e.target != reinier &&
   e.target != yellow &&
   e.target != red) return
 
@@ -67,8 +67,8 @@ function chooseAvatar(e) {
     case green:
       avatar = 'green'
       break
-    case blue:
-      avatar = 'blue'
+    case reinier:
+      avatar = 'reinier'
       break
     case yellow:
       avatar = 'yellow'
@@ -77,7 +77,7 @@ function chooseAvatar(e) {
       avatar = 'red'
       break
     default:
-      avatar = "blue"
+      avatar = "reinier"
   }
   localStorage.setItem("avatar", avatar)
 }
