@@ -4,7 +4,7 @@
   <meta charset="UTF-8">
   <meta http-equiv="X-UA-Compatible" content="IE=edge">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>X-mas Dino | Reinier Martin</title>
+  <title>Run! | Reinier Martin holiday game</title>
   <link rel="stylesheet" href="css/game.css">
   <script src="js/script.js" type="module"></script>
   <style>
@@ -17,30 +17,51 @@
   </style>
 </head>
 <body>
-  <div class="world" data-world>
-    <div class="score" data-score>0</div>
-    <div class="start-screen" data-start-screen>
-      <div>Press any key or click to start</div>
-      <div><small>Space / &UpArrow; : jump, &DownArrow; : duck</small></div>
+  <div class="game">
+    <div class="world" data-world>
+      <div class="score" data-score>0</div>
+      <div class="start-screen" data-start-screen>
+        <div>Press any key or click to start</div>
+        <div><small>Space / &UpArrow; : jump, &DownArrow; : duck</small></div>
+      </div>
+
+      <img src="imgs/ground.png" class="ground" data-ground>
+      <img src="imgs/ground.png" class="ground" data-ground>
+      <img src="" class="dino" data-dino>
     </div>
+
     <div class="end-screen hide" data-end-screen>
       <div>GAME OVER</div>
       <small>
         <div><span data-score-line></span></div>
-        <a href="scoreboard.html">see scoreboard</a>
         <div style="display: flex; justify-content: space-between; gap: 1em; margin-top: 2vmin;">
           <div class="replay" data-restart>New run</div>
-          <a href="index.html">New game</a>
+          <a href="select.html">New game</a>
         </div>
       </small>
+      <table class="scoreboard" data-scoreboard>
+        <thead>
+          <tr>
+            <th>nickname</th>
+            <th>character</th>
+            <th>score</th>
+          </tr>
+        </thead>
+        <tbody data-scoreboard-body>
+          <tr>
+            <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td>
+          </tr>
+        </tbody>
+      </table>
     </div>
-    <img src="imgs/ground.png" class="ground" data-ground>
-    <img src="imgs/ground.png" class="ground" data-ground>
-    <img src="" class="dino" data-dino>
+
+    <div class="controls hide" data-controls>
+      <div class="btn" data-duck>&DownArrow;</div>
+      <div class="btn" data-jump>&UpArrow;</div>
+    </div>
   </div>
-  <div class="controls hide" data-controls>
-    <div class="btn" data-duck>&DownArrow;</div>
-    <div class="btn" data-jump>&UpArrow;</div>
-  </div>
+
+  <script src="js/ajax-scoreboard.js" type="module"></script>
+
 </body>
 </html>

@@ -41,10 +41,10 @@ if (!isset($nameExists)) {
   foreach ($scores as $item) {
     if ($item < $score) {
       $query = "UPDATE scores
-      SET score = ?
+      SET score = ?, avatar = ?
       WHERE nickname = ?";
       $stmt = $conn->prepare($query);
-      $stmt->bind_param("is", $score, $nickname);
+      $stmt->bind_param("iss", $score, $avatar, $nickname);
       $stmt->execute();
     }
   }

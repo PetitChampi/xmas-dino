@@ -1,9 +1,12 @@
 import { setupGround, updateGround } from "./ground.js"
 import { setupDino, updateDino, getDinoRect, setDinoLose } from "./dino.js"
 import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
+import { getScoreboard } from "./ajax-scoreboard.js"
 
 const nickname = localStorage.getItem("nickname")
 const avatar = localStorage.getItem("avatar")
+
+console.log(nickname + " + " + avatar)
 
 if (!nickname || !avatar) {
   window.location.replace("index.html")
@@ -124,6 +127,8 @@ function handleLose() {
   ajax.open(method, url, asynchronous)
   ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
   ajax.send(data)
+
+  getScoreboard()
 }
 
 function setPixelToWorldScale() {
