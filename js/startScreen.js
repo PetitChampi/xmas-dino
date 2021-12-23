@@ -6,20 +6,24 @@ let green = document.querySelector("[data-green]")
 let yellow = document.querySelector("[data-yellow]")
 let red = document.querySelector("[data-red]")
 let blue = document.querySelector("[data-blue]")
-let nickname = input.value
-let avatar = "blue"
+let nickname = localStorage.getItem("nickname") || ""
+let avatar = localStorage.getItem("avatar") || "blue"
 
-window.addEventListener('load', () => { 
-  nickname = input.value
-  localStorage.setItem("avatar", avatar)
-})
+input.value = nickname
+initAvatar(avatar)
 
 document.addEventListener("click", chooseAvatar)
 
 input.addEventListener("input", () => {
   if (!nameError.classList.contains("hide")) nameError.classList.add('hide')
-  nickname = input.value
+  nickname = input.value.trim()
   localStorage.setItem("nickname", nickname)
+})
+
+input.addEventListener('keydown', (e) => {
+  if(['<','>'].indexOf(e.key) !== -1) {
+    e.preventDefault()
+  }
 })
 
 playBtn.addEventListener("click", e => {
@@ -28,6 +32,24 @@ playBtn.addEventListener("click", e => {
     nameError.classList.remove('hide')
   } else window.location.href = "game.html"
 })
+
+function initAvatar(avtr) {
+  switch (avtr) {
+    case "green":
+      avtr = green
+      break
+    case "blue":
+      avtr = blue
+      break
+    case "yellow":
+      avtr = yellow
+      break
+    case "red":
+      avtr = red
+      break
+  }
+  avtr.classList.add("avatar-focus")
+}
 
 function chooseAvatar(e) {
   if (e.target != green &&
