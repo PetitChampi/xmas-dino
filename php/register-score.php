@@ -50,6 +50,19 @@ if (!isset($nameExists)) {
   }
 }
 
+// Delete all records below the 20 highest scores
+$deleteQuery = "DELETE FROM scores
+WHERE id NOT IN
+(
+  SELECT * FROM (SELECT id FROM scores ORDER BY score DESC LIMIT 20) AS temp
+)";
 
+if (mysqli_query($conn, $deleteQuery)) {
+  echo "Record deleted successfully";
+} else {
+  echo "Error deleting record: " . mysqli_error($conn);
+}
+
+mysqli_close($conn);
 
 ?>
