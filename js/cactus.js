@@ -40,7 +40,7 @@ function createObstacle() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
   cactus.dataset.obstacle = true
-  cactus.src = "imgs/cactus.png"
+  cactus.src = "imgs/obstacle-tree-dressed.png"
   cactus.classList.add("cactus")
   setCustomProperty(cactus, "--left", 100)
 

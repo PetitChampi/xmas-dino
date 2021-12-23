@@ -4,6 +4,7 @@ import { setupObstacle, updateObstacle, getObstacleRects } from "./cactus.js"
 
 const nickname = localStorage.getItem("nickname")
 const avatar = localStorage.getItem("avatar")
+let highScore = localStorage.getItem("score")
 
 console.log(nickname + " + " + avatar)
 
@@ -12,7 +13,7 @@ if (!nickname || !avatar) {
 }
 
 const WORLD_WIDTH = 100
-const WORLD_HEIGHT = 30
+const WORLD_HEIGHT = 40
 const SPEED_SCALE_INCREASE = 0.00001
 
 const worldElem = document.querySelector("[data-world")
@@ -95,9 +96,6 @@ function handleStart(e) {
     document.removeEventListener("mousedown", handleStart)
   }
   if (e.type == "mousedown") {
-    document.addEventListener("touchend", () => {
-      if (controlsElem.classList.contains("hide")) controlsElem.classList.remove("hide")
-    })
     document.removeEventListener("touchstart", handleStart)
     document.removeEventListener("keydown", handleStart)
   }
@@ -109,16 +107,20 @@ function handleStart(e) {
 }
 
 function handleLose() {
+  localStorage.setItem("score", Math.floor(score))
+  console.log(localStorage.getItem("score"))
   setDinoLose()
-  setTimeout(() => {
-    scoreLineElem.innerText = `${nickname}'s score: ${Math.floor(score)}`
-    endScreenElem.classList.remove("hide")
-    if (!controlsElem.classList.contains("hide")) controlsElem.classList.add("hide")
-  }, 50)
-  
-  postScore()
 
-  getScoreboard()
+  if (score > highScore) {
+    highScore = Math.floor(score)
+    postScore()
+  }
+
+  setTimeout(() => {
+    scoreLineElem.innerText = `score: ${Math.floor(score)}\n high score: ${highScore}`
+    endScreenElem.classList.remove("hide")
+    getScoreboard()
+  }, 50)
 }
 
 function setPixelToWorldScale() {
@@ -133,9 +135,9 @@ function setPixelToWorldScale() {
   worldElem.style.height = `${WORLD_HEIGHT * worldToPixelScale}px`
 }
 
-// AJAX ----------
-// AJAX ----------
-// AJAX ----------
+// -------------------------------------------------------
+// -------------------- AJAX -----------------------------
+// -------------------------------------------------------
 
 function postScore() {
   let data = { nickname: nickname, score: Math.floor(score), avatar: avatar }

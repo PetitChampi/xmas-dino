@@ -22,10 +22,10 @@ $nickname = $load->nickname;
 $score = $load->score;
 $avatar = $load->avatar;
 
-$scores = array();
+// $scores = array();
 
 foreach ($dbData as $item) {
-  $scores[] = $item["score"];
+  // $scores[] = $item["score"];
   if ($item["nickname"] == $nickname) {
     $nameExists = true;
   }
@@ -38,15 +38,13 @@ if (!isset($nameExists)) {
   $stmt->bind_param("iss", $score, $nickname, $avatar);
   $stmt->execute();
 } else {
-  foreach ($scores as $item) {
-    if ($item < $score) {
-      $query = "UPDATE scores
-      SET score = ?, avatar = ?
-      WHERE nickname = ?";
-      $stmt = $conn->prepare($query);
-      $stmt->bind_param("iss", $score, $avatar, $nickname);
-      $stmt->execute();
-    }
+  if ($score > $item["score"]) {
+    $query = "UPDATE scores
+    SET score = ?, avatar = ?
+    WHERE nickname = ?";
+    $stmt = $conn->prepare($query);
+    $stmt->bind_param("iss", $score, $avatar, $nickname);
+    $stmt->execute();
   }
 }
 

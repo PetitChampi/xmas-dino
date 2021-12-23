@@ -82,4 +82,6 @@ function chooseAvatar(e) {
   localStorage.setItem("avatar", avatar)
 }
 
+localStorage.setItem("score", 0)
+
 console.log(nickname + " + " + avatar)
