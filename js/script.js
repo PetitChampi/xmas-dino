@@ -13,12 +13,14 @@ if (!nickname || !avatar) {
 }
 
 const WORLD_WIDTH = 100
-const WORLD_HEIGHT = 40
+const WORLD_HEIGHT = 50
 const SPEED_SCALE_INCREASE = 0.00001
 
 const worldElem = document.querySelector("[data-world")
 const scoreElem = document.querySelector("[data-score")
 const hiScoreElem = document.querySelector("[data-hiscore")
+const nicknameElem = document.querySelector("[data-nickname")
+const overlayElem = document.querySelector("[data-overlay")
 const startScreenElem = document.querySelector("[data-start-screen")
 const endScreenElem = document.querySelector("[data-end-screen")
 const endScreenGameoverElem = document.querySelector("[data-end-screen-gameover")
@@ -29,6 +31,8 @@ const restartElem = document.querySelectorAll("[data-restart")
 const closeBoardElem = document.querySelector("[data-close-board")
 const seeBoardElem = document.querySelector("[data-view-scoreboard")
 const scoreboardBody = document.querySelector("[data-scoreboard-body]")
+
+nicknameElem.innerText = nickname
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
@@ -104,7 +108,9 @@ function handleStart(e) {
   setupDino()
   setupObstacle()
   startScreenElem.classList.add("hide")
+    overlayElem.classList.remove("hide")
   if (!endScreenElem.classList.contains("hide")) endScreenElem.classList.add("hide")
+  if (!overlayElem.classList.contains("hide")) overlayElem.classList.add("hide")
   if (e.type == "touchstart") {
     controlsElem.classList.remove("hide")
     document.removeEventListener("keydown", handleStart)
@@ -131,8 +137,9 @@ function handleLose() {
   }
 
   setTimeout(() => {
-    scoreLineElem.innerText = `score: ${Math.floor(score)}\n high score: ${highScore}`
+    scoreLineElem.innerText = Math.floor(score)
     endScreenElem.classList.remove("hide")
+    overlayElem.classList.remove("hide")
     hiScoreElem.textContent = highScore
     getScoreboard()
   }, 50)

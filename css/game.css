@@ -41,7 +41,7 @@ img {
   width: 100%;
   max-width: 500px;
   text-align: center;
-  padding: 20px;
+  /* padding: 20px; */
 }
 .button {
   background-color: white;
@@ -52,6 +52,11 @@ img {
   color: black;
   text-transform: uppercase;
   line-height: initial;
+  cursor: pointer;
+}
+.button:hover {
+  box-shadow: none;
+  transform: translateY(4px);
 }
 .btn-big {
   padding: 1.25em 2.5em;
@@ -101,7 +106,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 30px;
+  padding: 30px;
 }
 .team-picture {
   width: 100%;
@@ -129,7 +134,7 @@ img {
   display: flex;
   flex-direction: column;
   align-items: center;
-  padding-bottom: 30px;
+  padding: 30px;
   background-image: url('../imgs/snowflake.png');
   background-size: 100px;
   background-position: center;
@@ -219,25 +224,23 @@ img {
   min-height: 100vh;
   position: relative;
 }
-
-.score-body {
-  flex-direction: column;
-}
-
 .world {
   overflow: hidden;
   position: relative;
 }
-
 .score {
   position: absolute;
-  font-size: 3vmin;
-  right: 1vmin;
-  top: 1vmin;
+  text-align: center;
+  font-size: 1.5em;
+  top: 3rem;
+}
+.score-hiscore {
+  margin-top: .625em;
+  font-size: .5em;
 }
 
 .controls {
-  position: absolute;
+  position: fixed;
   bottom: 5vh;
   font-size: 20px;
   width: 100%;
@@ -245,17 +248,70 @@ img {
   justify-content: space-between;
   padding: 0 10vw;
 }
+.controls-btn {
+  background-color: var(--main-color);
+  padding: 1rem;
+  border-radius: 20px;
+}
+.controls-char {
+  font-size: 1.25em;
+  display: inline-block;
+  transform: rotateZ(-90deg);
+  color: white;
+  padding: .19em 0 0 .125em;
+}
+.controls-caption {
+  font-size: .625em;
+  margin-top: .625em;
+  text-align: center;
+  text-transform: uppercase;
+}
 
 .end-screen,
 .start-screen {
   position: absolute;
-  z-index: 1;
-  background-color: rgba(255, 204, 137, 0.7);
-  padding: 10px 20px;
-  /* font-size: 5vmin; */
+  max-width: calc(100% - 40px);
+  z-index: 2;
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
+  transform: translateY(-50%);
+}
+.end-screen-title {
+  margin-top: 2rem;
+}
+.end-screen-p {
+  font-size: .75em;
+  margin: 1.5em 0 2em;
+}
+.end-screen-links {
+  display: flex;
+  flex-direction: column;
+  gap: 1.25em;
+  align-items: center;
+  font-size: .875em;
+}
+.end-screen-small-links {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  color: white;
+  font-size: .75em;
+  text-transform: uppercase;
+  margin-top: 3.25em;
+}
+.end-screen-small-links .small-link {
+  cursor: pointer;
+}
+.end-screen-small-links .small-link:hover {
+  color: black;
+}
+.game-overlay {
+  position: absolute;
+  top: 0;
+  z-index: 1;
+  width: 100vw;
+  height: 100vh;
+  background-color: var(--main-color);
+  opacity: .75;
 }
 
 .ground {
