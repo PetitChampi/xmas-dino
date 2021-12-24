@@ -94,7 +94,7 @@ function handleJump(delta) {
 function onJump(e) {
   if ((e.code !== "Space" &&
       e.code !== "ArrowUp" &&
-      e.target !== jumpElem) ||
+      e.currentTarget !== jumpElem) ||
       isJumping ||
       isDucking) return
 
@@ -104,7 +104,7 @@ function onJump(e) {
 
 function onDuck(e) {
   if ((e.code !== "ArrowDown" &&
-      e.target !== duckElem) ||
+      e.currentTarget !== duckElem) ||
       isJumping) return
 
   if (e.type == "keydown" ||
