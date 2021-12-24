@@ -254,6 +254,7 @@ img {
   border-radius: 20px;
 }
 .controls-char {
+  pointer-events: none;
   font-size: 1.25em;
   display: inline-block;
   transform: rotateZ(-90deg);
