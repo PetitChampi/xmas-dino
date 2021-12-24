@@ -81,7 +81,7 @@ a {
 }
 .text-input {
   font-family: 'Press Start 2P', cursive;
-  font-size: .875em;
+  font-size: 1em;
   padding: 1.25em;
   max-width: 100%;
   border: none;
@@ -209,6 +209,7 @@ a {
   border-radius: 10px;
   display: flex;
   overflow: hidden;
+  padding: 10px;
 }
 .avatar-name {
   font-size: .625em;
@@ -274,6 +275,18 @@ a {
   text-transform: uppercase;
 }
 
+.start-screen {
+  box-shadow: -2px 2px 24px 0px rgba(0,0,0,0.59);
+  text-align: center;
+}
+.start-screen-title {
+  margin-bottom: 1rem;
+  text-transform: uppercase;
+}
+.start-screen-p {
+  font-size: .75em;
+  text-transform: uppercase;
+}
 .end-screen,
 .start-screen {
   position: absolute;
@@ -365,7 +378,7 @@ a {
 .ptero {
   position: absolute;
   left: calc(var(--left) * 1%);
-  height: 30%;
+  height: 25%;
   bottom: 20%;
 }
 

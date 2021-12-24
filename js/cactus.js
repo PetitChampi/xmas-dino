@@ -40,7 +40,7 @@ function createObstacle() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
   cactus.dataset.obstacle = true
-  if (Math.floor(Math.random() * 2) == 0) cactus.src = "imgs/obstacle-tree-dressed.png"
+  if (Math.floor(Math.random() * 2) == 0) cactus.src = "imgs/obstacle-tree-decorated.png"
   else cactus.src = "imgs/obstacle-tree-naked.png"
   cactus.classList.add("cactus")
   setCustomProperty(cactus, "--left", 100)
@@ -48,8 +48,8 @@ function createObstacle() {
   const ptero = document.createElement("img")
   ptero.dataset.ptero = true
   ptero.dataset.obstacle = true
-  if (Math.floor(Math.random() * 2) == 0) ptero.src = "imgs/obstacle-tree-dressed.png"
-  else ptero.src = "imgs/obstacle-tree-naked.png"
+  if (Math.floor(Math.random() * 2) == 0) ptero.src = "imgs/obstacle-gift.png"
+  else ptero.src = "imgs/obstacle-reindeer.png"
   ptero.classList.add("ptero")
   setCustomProperty(ptero, "--left", 100)
 

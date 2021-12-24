@@ -62,11 +62,11 @@ export function setDinoLose() {
 
 function handleRun(delta, speedScale) {
   if (isJumping) {
-    dinoElem.src = `imgs/${avatar}/${avatar}-stationary.png`
+    dinoElem.src = `imgs/${avatar}/${avatar}-jump.png`
     return
   }
   if (isDucking) {
-    dinoElem.src = `imgs/${avatar}/${avatar}-ducking.png`
+    dinoElem.src = `imgs/${avatar}/${avatar}-duck.png`
     return
   }
 
@@ -110,13 +110,13 @@ function onDuck(e) {
   if (e.type == "keydown" ||
       e.type == "mousedown" ||
       e.type == "touchstart") {
-    setCustomProperty(dinoElem, "--height", 15)
+    setCustomProperty(dinoElem, "--height", 18)
     isDucking = true
   }
   if (e.type == "keyup" ||
       e.type == "mouseup" ||
       e.type == "touchend") {
-    setCustomProperty(dinoElem, "--height", 30)
     isDucking = false
+    setCustomProperty(dinoElem, "--height", 30)
   }
 }
