@@ -9,25 +9,36 @@
 
 :root {
   --main-color: #81A1C3;
+  --rm-red: #ec5246;
 }
 
 * {
   box-sizing: border-box;
+  margin: 0;
 }
-
 body {
   margin: 0;
   font-family: 'Press Start 2P', cursive;
   font-size: 16px;
   line-height: 160%;
 }
+img {
+  max-width: 100%;
+}
 
 /* ---------- utils */
 
 .hide {
-  display: none;
+  display: none !important;
+}
+.align-right {
+  text-align: right;
+}
+.align-left {
+  text-align: left;
 }
 .wrapper {
+  width: 100%;
   max-width: 500px;
   text-align: center;
   padding: 20px;
@@ -46,11 +57,40 @@ body {
   padding: 1.25em 2.5em;
 }
 .btn-small {
-  padding: .75em 1.25em;
+  padding: .75em 1.25em .65em;
 }
 .headline {
   font-size: 1.5em;
   line-height: 120%;
+}
+.popup {
+  background-color: var(--main-color);
+  padding: 20px;
+  border: 4px solid white;
+  border-radius: 5px;
+}
+.text-input {
+  font-family: 'Press Start 2P', cursive;
+  font-size: .875em;
+  padding: 1.25em;
+  max-width: 100%;
+  border: none;
+  border-radius: 5px;
+  box-shadow: 0 4px 0 0 black;
+}
+.text-input::placeholder {
+  color: black;
+  opacity: .15;
+  text-transform: uppercase;
+}
+.text-input:focus {
+  outline: none;
+}
+.input-label {
+  display: inline-block;
+  font-size: .75rem;
+  margin-bottom: .625rem;
+  line-height: initial;
 }
 
 /* ---------- welcome screen */
@@ -83,32 +123,91 @@ body {
 
 /* ---------- select screen */
 
-.choose-avatar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
+.select-main {
+  background-color: var(--main-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding-bottom: 30px;
+  background-image: url('../imgs/snowflake.png');
+  background-size: 100px;
+  background-position: center;
+  background-repeat: space;
+}
+
+.select-name-welcome {
+  margin: 1.25em 0 3.125em;
+  position: relative;
+}
+.select-name-snowflakes {
+  position: absolute;
+  width: 100%;
+  top: 0;
+  display: flex;
+  justify-content: space-between;
+}
+.select-name-snowflakes .snowflake {
+  width: 1.75em;
+}
+.select-name-welcome-p {
+  margin-bottom: .75em;
+}
+.select-name-form {
+  margin-bottom: 1.25em;
+}
+.select-name-error {
+  display: inline-block;
+  font-size: .75em;
+  margin-top: .625em;
+  color: var(--rm-red);
+  text-shadow:
+  -1px -1px 0 white,  
+  1px -1px 0 white,
+  -1px 1px 0 white,
+  1px 1px 0 white;
+}
+
+.select-back-btn {
+  font-size: .625em;
+}
+.select-avatar-intro {
+  margin: 2em 1.75em;
+}
+.select-avatar-intro-name {
+  font-size: 1.25em;
+  word-wrap: break-word;
+}
+.select-avatar-intro-label {
+  font-size: .75em;
+  margin-top: 1.5rem;
+}
+
+.select-avatar-grid {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
   gap: 10px;
   width: 100%;
-  max-width: 200px;
+  margin-bottom: 3.75em;
 }
-.avatar {
-  width: 100%;
-  height: 50px;
-  background-color: burlywood;
+.avatar-grid-item {
+  flex: 0 1 30%;
 }
-.avatar[data-green] {
-  background-color: lightgreen;
+.avatar-img-container {
+  border-radius: 10px;
+  display: flex;
+  overflow: hidden;
 }
-.avatar[data-red] {
-  background-color: lightcoral;
+.avatar-name {
+  font-size: .625em;
+  margin-top: .625em;
 }
-.avatar[data-yellow] {
-  background-color: gold;
+.avatar-focus .avatar-img-container {
+  background-color: white;
 }
-.avatar[data-reinier] {
-  background-color: lightskyblue;
-}
-.avatar-focus {
-  border: 2px solid black;
+.avatar-focus .avatar-name {
+  color: white;
 }
 
 /* ---------- game */
@@ -160,6 +259,7 @@ body {
 }
 
 .ground {
+  max-width: unset;
   --left: 0;
   position: absolute;
   /* this width value is being referred to in ground.js */

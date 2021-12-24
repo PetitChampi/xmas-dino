@@ -1,27 +1,33 @@
 let nameScreen = document.querySelector("[data-name-screen]")
 let avtrScreen = document.querySelector("[data-avatar-screen]")
-let input = document.querySelector("[data-nickname]")
+let input = document.querySelector("[data-nickname-input]")
+let nameLine = document.querySelector("[data-nickname]")
 let playBtn = document.querySelector("[data-play-btn]")
 let nextBtn = document.querySelector("[data-next-btn]")
 let changeNameBtn = document.querySelector("[data-change-name]")
 let nameError = document.querySelector("[data-noname]")
-let avatarElems = document.querySelectorAll(".avatar")
-let green = document.querySelector("[data-green]")
-let yellow = document.querySelector("[data-yellow]")
-let red = document.querySelector("[data-red]")
+let avatarElems = document.querySelectorAll(".avatar-grid-item")
 let reinier = document.querySelector("[data-reinier]")
+let esther = document.querySelector("[data-esther]")
+let eva = document.querySelector("[data-eva]")
+let sharyon = document.querySelector("[data-sharyon]")
+let roberta = document.querySelector("[data-roberta]")
 let nickname = localStorage.getItem("nickname") || ""
 let avatar = localStorage.getItem("avatar") || "reinier"
 
 input.value = nickname
+nameLine.innerText = nickname
 initAvatar(avatar)
 
-document.addEventListener("click", chooseAvatar)
+reinier.addEventListener("click", chooseAvatar)
+esther.addEventListener("click", chooseAvatar)
+eva.addEventListener("click", chooseAvatar)
+sharyon.addEventListener("click", chooseAvatar)
+roberta.addEventListener("click", chooseAvatar)
 
 input.addEventListener("input", () => {
   if (!nameError.classList.contains("hide")) nameError.classList.add('hide')
   nickname = input.value.trim()
-  localStorage.setItem("nickname", nickname)
 })
 
 input.addEventListener('keydown', (e) => {
@@ -32,8 +38,14 @@ input.addEventListener('keydown', (e) => {
 
 nextBtn.addEventListener("click", e => {
   e.preventDefault()
+  if (nickname == "") {
+    nameError.classList.remove('hide')
+    return
+  }
   avtrScreen.classList.remove('hide')
   nameScreen.classList.add('hide')
+  localStorage.setItem("nickname", nickname)
+  nameLine.innerText = nickname
 })
 
 changeNameBtn.addEventListener("click", e => {
@@ -51,46 +63,53 @@ playBtn.addEventListener("click", e => {
 
 function initAvatar(avtr) {
   switch (avtr) {
-    case "green":
-      avtr = green
-      break
     case "reinier":
       avtr = reinier
       break
-    case "yellow":
-      avtr = yellow
+    case "esther":
+      avtr = esther
       break
-    case "red":
-      avtr = red
+    case "eva":
+      avtr = eva
+      break
+    case "sharyon":
+      avtr = sharyon
+      break
+    case "roberta":
+      avtr = roberta
       break
   }
   avtr.classList.add("avatar-focus")
 }
 
 function chooseAvatar(e) {
-  if (e.target != green &&
-  e.target != reinier &&
-  e.target != yellow &&
-  e.target != red) return
+  if (e.currentTarget != reinier &&
+  e.currentTarget != esther &&
+  e.currentTarget != eva &&
+  e.currentTarget != sharyon &&
+  e.currentTarget != roberta) return
 
   avatarElems.forEach(elem => {
     if (elem.classList.contains("avatar-focus")) elem.classList.remove("avatar-focus")
   })
 
-  e.target.classList.add("avatar-focus")
+  e.currentTarget.classList.add("avatar-focus")
 
-  switch (e.target) {
-    case green:
-      avatar = 'green'
-      break
+  switch (e.currentTarget) {
     case reinier:
       avatar = 'reinier'
       break
-    case yellow:
-      avatar = 'yellow'
+    case esther:
+      avatar = 'esther'
       break
-    case red:
-      avatar = 'red'
+    case eva:
+      avatar = 'eva'
+      break
+    case sharyon:
+      avatar = 'sharyon'
+      break
+    case roberta:
+      avatar = 'roberta'
       break
     default:
       avatar = "reinier"

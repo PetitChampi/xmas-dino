@@ -5,7 +5,7 @@ import {
 } from "./updateCustomProperty.js"
 
 const SPEED = 0.05
-const groundElems = document.querySelectorAll("[data-ground")
+const groundElems = document.querySelectorAll("[data-ground]")
 
 export function setupGround() {
   setCustomProperty(groundElems[0], "--left", 0)

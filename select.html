@@ -7,28 +7,75 @@
   <title>Choose name & character | Reinier Martin holiday game</title>
   <link rel="stylesheet" href="css/game.css">
 </head>
-<body class="score-body">
+<body>
 
-  <div class="name-screen" data-name-screen>
-    <h2>Pick a name</h2>
-    <label for="nickname">enter nickname</label>
-    <input type="text" name="nickname" id="nickname" data-nickname>
-    <span class="hide" style="color: red;" data-noname>gotta get a name bro</span>
-    <a href="" data-next-btn>Okay, next</a>
-  </div>
+  <main class="select-main">
+    <div class="wrapper">
+      <div class="select-name-screen popup" data-name-screen>
+        <div class="select-name-welcome">
+          <div class="select-name-snowflakes">
+            <img src="imgs/snowflake.png" alt="snowflake" class="snowflake">
+            <img src="imgs/snowflake.png" alt="snowflake" class="snowflake">
+          </div>
+          <p class="select-name-welcome-p">Welcome to</p>
+          <h2 class="headline">Winter Wonderland</h2>
+        </div>
+        <div class="select-name-form">
+          <label for="nickname" class="input-label">How shall we call you?</label>
+          <input type="text" name="nickname" placeholder="Enter nickname" id="nickname" class="text-input" data-nickname-input>
+          <span class="select-name-error hide" data-noname>Please choose a name</span>
+        </div>
+        <div class="align-right">
+          <a href="" class="button btn-small" data-next-btn>next &gt;</a>
+        </div>
+      </div>
+    
+      <div class="select-avatar-screen popup hide" data-avatar-screen>
+        <div class="align-left">
+          <a href="" class="button btn-small select-back-btn" data-change-name>&lt; Back</a>
+        </div>
+        <div class="select-avatar-intro">
+          <p class="select-avatar-intro-name">Hi <span data-nickname></span>,</p>
+          <p class="select-avatar-intro-label">Pick your character</p>
+        </div>
 
-  <div class="avatar-screen hide" data-avatar-screen>
-    <h2>Hi {nickname}!</h2>
-    <p>Pick a character</p>
-    <div class="choose-avatar">
-      <div class="avatar" data-reinier>reinier</div>
-      <div class="avatar" data-yellow></div>
-      <div class="avatar" data-green></div>
-      <div class="avatar" data-red></div>
+        <div class="select-avatar-grid">
+          <div class="avatar-grid-item" data-reinier>
+            <div class="avatar-img-container">
+              <img src="imgs/reinier/reinier-stationary.png" alt="Reinier" class="avatar-img">
+            </div>
+            <p class="avatar-name">Reinier</p>
+          </div>
+          <div class="avatar-grid-item" data-esther>
+            <div class="avatar-img-container">
+              <img src="imgs/reinier/reinier-stationary.png" alt="Reinier" class="avatar-img">
+            </div>
+            <p class="avatar-name">Esther</p>
+          </div>
+          <div class="avatar-grid-item" data-eva>
+            <div class="avatar-img-container">
+              <img src="imgs/reinier/reinier-stationary.png" alt="Reinier" class="avatar-img">
+            </div>
+            <p class="avatar-name">Eva</p>
+          </div>
+          <div class="avatar-grid-item" data-sharyon>
+            <div class="avatar-img-container">
+              <img src="imgs/reinier/reinier-stationary.png" alt="Reinier" class="avatar-img">
+            </div>
+            <p class="avatar-name">Sharyon</p>
+          </div>
+          <div class="avatar-grid-item" data-roberta>
+            <div class="avatar-img-container">
+              <img src="imgs/reinier/reinier-stationary.png" alt="Reinier" class="avatar-img">
+            </div>
+            <p class="avatar-name">Roberta</p>
+          </div>
+        </div>
+
+        <a href="" class="button btn-big" data-play-btn>Start game</a>
+      </div>
     </div>
-    <a href="" data-play-btn>Start game</a>
-    <a href="" data-change-name>Change nickname</a>
-  </div>
+  </main>
 
   <script src="js/startScreen.js"></script>
 </body>
