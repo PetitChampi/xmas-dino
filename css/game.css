@@ -1,12 +1,115 @@
+@font-face {
+  font-family: 'Press Start 2P';
+  src: url('../fonts/PressStart2P-Regular.eot'),
+  url('../fonts/PressStart2P-Regular.ttf') format('truetype'),
+  url('../fonts/PressStart2P-Regular.svg') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+:root {
+  --main-color: #81A1C3;
+}
+
 * {
   box-sizing: border-box;
 }
 
 body {
   margin: 0;
+  font-family: 'Press Start 2P', cursive;
+  font-size: 16px;
+  line-height: 160%;
 }
 
-/* game */
+/* ---------- utils */
+
+.hide {
+  display: none;
+}
+.wrapper {
+  max-width: 500px;
+  text-align: center;
+}
+.button {
+  background-color: white;
+  box-shadow: 0 4px 0 0 black;
+  border-radius: 50px;
+  display: inline-block;
+  text-decoration: none;
+  color: black;
+  text-transform: uppercase;
+  line-height: initial;
+}
+.btn-big {
+  padding: 1.25em 2.5em;
+}
+.btn-small {
+  padding: .75em 1.25em;
+}
+.headline {
+  font-size: 1.5em;
+  line-height: 120%;
+}
+
+/* ---------- welcome screen */
+
+.welcome-main {
+  background-color: var(--main-color);
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+.team-picture {
+  width: 100%;
+  height: 250px;
+  max-height: 50vh;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  margin-bottom: 30px;
+}
+.team-picture-img {
+  display: inline-block;
+  width: 100%;
+}
+.welcome-signature {
+  font-size: .875em;
+  margin: 2.5em 0 3.5em;
+}
+
+/* ---------- select screen */
+
+.choose-avatar {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 10px;
+  width: 100%;
+  max-width: 200px;
+}
+.avatar {
+  width: 100%;
+  height: 50px;
+  background-color: burlywood;
+}
+.avatar[data-green] {
+  background-color: lightgreen;
+}
+.avatar[data-red] {
+  background-color: lightcoral;
+}
+.avatar[data-yellow] {
+  background-color: gold;
+}
+.avatar[data-reinier] {
+  background-color: lightskyblue;
+}
+.avatar-focus {
+  border: 2px solid black;
+}
+
+/* ---------- game */
 
 .game {
   display: flex;
@@ -41,10 +144,6 @@ body {
   justify-content: space-between;
   padding: 0 10vw;
 }
-.btn {
-  background-color: rgba(0, 0, 0, .2);
-  padding: 15px 20px;
-}
 
 .end-screen,
 .start-screen {
@@ -56,10 +155,6 @@ body {
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-}
-
-.hide {
-  display: none;
 }
 
 .ground {
@@ -102,7 +197,7 @@ body {
   color: brown;
 }
 
-/* score board */
+/* ---------- scoreboard */
 
 .scoreboard {
   border-collapse: collapse;
@@ -117,34 +212,4 @@ body {
 }
 .score-highlighted {
   background-color: burlywood;
-}
-
- /* select screen */
-
-.choose-avatar {
-  display: grid;
-  grid-template-columns: repeat(2, 1fr);
-  gap: 10px;
-  width: 100%;
-  max-width: 200px;
-}
-.avatar {
-  width: 100%;
-  height: 50px;
-  background-color: burlywood;
-}
-.avatar[data-green] {
-  background-color: lightgreen;
-}
-.avatar[data-red] {
-  background-color: lightcoral;
-}
-.avatar[data-yellow] {
-  background-color: gold;
-}
-.avatar[data-reinier] {
-  background-color: lightskyblue;
-}
-.avatar-focus {
-  border: 2px solid black;
 }
