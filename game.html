@@ -34,10 +34,12 @@
       <img src="" class="dino" data-dino>
     </div>
 
+    <!-- add hide here -->
     <div class="end-screen popup hide" data-end-screen>
       <div class="wrapper">
+        <!-- remove hide here -->
         <div data-end-screen-gameover>
-          <h2 class="headline end-screen-title">GAME OVER</h2>
+          <h2 class="headline end-screen-title">Game over</h2>
           <div class="end-screen-p">You scored <span data-score-line></span>, <span data-nickname></span></div>
           <div class="end-screen-links">
             <div class="button btn-big" data-view-scoreboard>View highscores</div>
@@ -50,16 +52,37 @@
           </div>
         </div>
   
+        <!-- add hide here -->
         <div data-end-screen-scoreboard class="hide">
-          <div data-close-board>close</div>
+          <div class="align-left">
+            <div data-close-board class="button btn-small popup-back-btn">&lt; Back</div>
+          </div>
+
+          <h2 class="headline end-screen-title">Highscores</h2>
           <table class="scoreboard" data-scoreboard>
             <tbody data-scoreboard-body>
               <tr>
-                <td colspan="4" style="color: gray; text-align:center;">Scoreboard will work with PHP</td>
+                <!-- <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td> -->
+                <td>01.</td>
+                <td class="name">Starsky</td>
+                <td class="align-right">238</td>
+              </tr>
+              <tr>
+                <!-- <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td> -->
+                <td>02.</td>
+                <td class="name">Suuuperrrloonnggboiiii</td>
+                <td class="align-right">1259</td>
+              </tr>
+              <tr>
+                <!-- <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td> -->
+                <td>03.</td>
+                <td class="name">Hutch</td>
+                <td class="align-right">346</td>
               </tr>
             </tbody>
           </table>
-          <div class="replay" data-restart>Play again</div>
+
+          <div class="button btn-big" data-restart>Play again</div>
         </div>
       </div>
     </div>

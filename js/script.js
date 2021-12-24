@@ -208,14 +208,14 @@ function getScoreboard() {
       
       for (let i = 0; i < data.length; i++) {
         let nickname = data[i].nickname
-        let character = data[i].avatar
+        // let character = data[i].avatar
         let score = data[i].score
 
         html += "<tr>"
-        html += `<td>${i + 1}</td>`
-        html += `<td>${nickname}</td>`
-        html += `<td><img style="object-fit:contain; height:30px; width:100%; text-align:center;" src="imgs/${character}/${character}-stationary.png""></td>`
-        html += `<td>${score}</td>`
+        html += `<td>${String(i + 1).padStart(2, '0')}.</td>`
+        html += `<td class="name">${nickname}</td>`
+        // html += `<td><img style="object-fit:contain; height:30px; width:100%; text-align:center;" src="imgs/${character}/${character}-stationary.png""></td>`
+        html += `<td class="align-right">${score}</td>`
         html += "</tr>"
       }
 

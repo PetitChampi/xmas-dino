@@ -174,7 +174,7 @@ img {
   1px 1px 0 white;
 }
 
-.select-back-btn {
+.popup-back-btn {
   font-size: .625em;
 }
 .select-avatar-intro {
@@ -273,12 +273,14 @@ img {
 .start-screen {
   position: absolute;
   max-width: calc(100% - 40px);
+  width: 500px;
   z-index: 2;
   top: 50%;
   transform: translateY(-50%);
 }
 .end-screen-title {
   margin-top: 2rem;
+  text-transform: uppercase;
 }
 .end-screen-p {
   font-size: .75em;
@@ -325,7 +327,6 @@ img {
   bottom: 0;
   left: calc(var(--left) * 1%);
 }
-
 .dino {
   --bottom: 0;
   --height: 30;
@@ -334,14 +335,12 @@ img {
   height: calc(var(--height) * 1%);
   bottom: calc(var(--bottom) * 1%);
 }
-
 .cactus {
   position: absolute;
   left: calc(var(--left) * 1%);
   height: 30%;
   bottom: 0;
 }
-
 .ptero {
   position: absolute;
   left: calc(var(--left) * 1%);
@@ -349,23 +348,24 @@ img {
   bottom: 20%;
 }
 
-.replay {
-  cursor: pointer;
-  text-decoration: underline;
-}
-.replay:hover {
-  color: brown;
-}
-
 /* ---------- scoreboard */
 
 .scoreboard {
-  border-collapse: collapse;
+  margin: 1.5em 0 1.75em;
+  text-align: left;
+  line-height: 120%;
+  width: 100%;
 }
 .scoreboard th,
 .scoreboard td {
-  border: 1px solid gray;
-  padding: 5px 10px;
+  font-size: .75em;
+}
+.scoreboard td.name {
+  max-width: 0;
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
 }
 .scoreboard th {
   background-color: linen;
