@@ -30,6 +30,7 @@ body {
 .wrapper {
   max-width: 500px;
   text-align: center;
+  padding: 20px;
 }
 .button {
   background-color: white;
