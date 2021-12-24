@@ -92,7 +92,6 @@ function handleJump(delta) {
 }
 
 function onJump(e) {
-  console.log(e.target)
   if ((e.code !== "Space" &&
       e.code !== "ArrowUp" &&
       e.target !== jumpElem) ||
@@ -104,7 +103,6 @@ function onJump(e) {
 }
 
 function onDuck(e) {
-  console.log(e.target)
   if ((e.code !== "ArrowDown" &&
       e.target !== duckElem) ||
       isJumping) return
