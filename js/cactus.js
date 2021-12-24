@@ -2,7 +2,7 @@ import { setCustomProperty, getCustomProperty, incrementCustomProperty } from ".
 
 // Has to be the same speed as the ground
 const SPEED = .05
-const OBSTACLE_INTERVAL_MIN = 700
+const OBSTACLE_INTERVAL_MIN = 1000
 const OBSTACLE_INTERVAL_MAX = 2000
 const worldElem = document.querySelector("[data-world")
 

@@ -57,7 +57,7 @@ export function getDinoRect() {
 }
 
 export function setDinoLose() {
-  dinoElem.src = `imgs/${avatar}/${avatar}-lose.png`
+  dinoElem.src = `imgs/${avatar}/${avatar}-stationary.png`
 }
 
 function handleRun(delta, speedScale) {
@@ -69,6 +69,8 @@ function handleRun(delta, speedScale) {
     dinoElem.src = `imgs/${avatar}/${avatar}-duck.png`
     return
   }
+
+  dinoElem.src = `imgs/${avatar}/${avatar}-run-${dinoFrame}.png`
 
   if (currentFrameTime >= FRAME_TIME) {
     dinoFrame = (dinoFrame + 1) % DINO_FRAME_COUNT
@@ -116,7 +118,7 @@ function onDuck(e) {
   if (e.type == "keyup" ||
       e.type == "mouseup" ||
       e.type == "touchend") {
-    isDucking = false
     setCustomProperty(dinoElem, "--height", 30)
+    isDucking = false
   }
 }
