@@ -22,14 +22,20 @@ const hiScoreElem = document.querySelector("[data-hiscore")
 const nicknameElem = document.querySelector("[data-nickname")
 const overlayElem = document.querySelector("[data-overlay")
 const startScreenElem = document.querySelector("[data-start-screen")
+// end screen elems
 const endScreenElem = document.querySelector("[data-end-screen")
 const endScreenGameoverElem = document.querySelector("[data-end-screen-gameover")
 const endScreenBoardElem = document.querySelector("[data-end-screen-scoreboard")
+const endScreenCreditsElem = document.querySelector("[data-end-screen-credits")
+const endScreenShareElem = document.querySelector("[data-end-screen-share")
+const closeBoardElem = document.querySelectorAll("[data-close-board")
+const seeBoardElem = document.querySelector("[data-view-scoreboard")
+const creditsBtnElem = document.querySelector("[data-credits")
+const shareBtnElem = document.querySelector("[data-share")
+//
 const scoreLineElem = document.querySelector("[data-score-line")
 const controlsElem = document.querySelector("[data-controls")
 const restartElem = document.querySelectorAll("[data-restart")
-const closeBoardElem = document.querySelector("[data-close-board")
-const seeBoardElem = document.querySelector("[data-view-scoreboard")
 const scoreboardBody = document.querySelector("[data-scoreboard-body]")
 
 nicknameElem.innerText = nickname
@@ -48,9 +54,21 @@ seeBoardElem.addEventListener("click", () => {
   endScreenBoardElem.classList.remove('hide')
   endScreenGameoverElem.classList.add('hide')
 })
-closeBoardElem.addEventListener("click", () => {
-  endScreenBoardElem.classList.add('hide')
-  endScreenGameoverElem.classList.remove('hide')
+creditsBtnElem.addEventListener("click", () => {
+  endScreenCreditsElem.classList.remove('hide')
+  endScreenGameoverElem.classList.add('hide')
+})
+shareBtnElem.addEventListener("click", () => {
+  endScreenShareElem.classList.remove('hide')
+  endScreenGameoverElem.classList.add('hide')
+})
+closeBoardElem.forEach( elem => {
+  elem.addEventListener("click", () => {
+    if (!endScreenBoardElem.classList.contains("hide")) { endScreenBoardElem.classList.add('hide') }
+    if (!endScreenCreditsElem.classList.contains("hide")) { endScreenCreditsElem.classList.add('hide') }
+    if (!endScreenShareElem.classList.contains("hide")) { endScreenShareElem.classList.add('hide') }
+    endScreenGameoverElem.classList.remove('hide')
+  })
 })
 
 setupGround()

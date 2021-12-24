@@ -34,11 +34,12 @@
       <img src="" class="dino" data-dino>
     </div>
 
-    <!-- add hide here -->
-    <div class="end-screen popup hide" data-end-screen>
+    <!-- end screen -->
+    <div class="end-screen popup " data-end-screen>
       <div class="wrapper">
-        <!-- remove hide here -->
-        <div data-end-screen-gameover>
+
+        <!-- game over -->
+        <div data-end-screen-gameover class="">
           <h2 class="headline end-screen-title">Game over</h2>
           <div class="end-screen-p">You scored <span data-score-line></span>, <span data-nickname></span></div>
           <div class="end-screen-links">
@@ -52,38 +53,82 @@
           </div>
         </div>
   
-        <!-- add hide here -->
+        <!-- scoreboard -->
         <div data-end-screen-scoreboard class="hide">
           <div class="align-left">
             <div data-close-board class="button btn-small popup-back-btn">&lt; Back</div>
           </div>
-
           <h2 class="headline end-screen-title">Highscores</h2>
           <table class="scoreboard" data-scoreboard>
             <tbody data-scoreboard-body>
               <tr>
-                <!-- <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td> -->
                 <td>01.</td>
-                <td class="name">Starsky</td>
+                <td class="name">Placeholder</td>
                 <td class="align-right">238</td>
               </tr>
               <tr>
-                <!-- <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td> -->
                 <td>02.</td>
                 <td class="name">Suuuperrrloonnggboiiii</td>
                 <td class="align-right">1259</td>
               </tr>
               <tr>
-                <!-- <td colspan="3" style="color: gray; text-align:center;">Scoreboard will work with PHP</td> -->
                 <td>03.</td>
                 <td class="name">Hutch</td>
                 <td class="align-right">346</td>
               </tr>
             </tbody>
           </table>
-
           <div class="button btn-big" data-restart>Play again</div>
         </div>
+
+        <!-- share -->
+        <div data-end-screen-share class="end-screen-share hide">
+          <div class="align-left">
+            <div data-close-board class="button btn-small popup-back-btn">&lt; Back</div>
+          </div>
+          <h2 class="headline end-screen-title">Share</h2>
+          <div class="end-screen-links">
+            <a href="" class="button btn-big">Email</a>
+            <a href="" class="button btn-big">Facebook</a>
+            <a href="" class="button btn-big">Linkedin</a>
+            <a href="" class="button btn-big">Twitter</a>
+            <a href="" class="button btn-big">Whatsapp</a>
+          </div>
+        </div>
+
+        <!-- credits -->
+        <div data-end-screen-credits class="end-screen-credits hide">
+          <div class="align-left">
+            <div data-close-board class="button btn-small popup-back-btn">&lt; Back</div>
+          </div>
+          <h2 class="headline end-screen-title">Credits</h2>
+          <div class="credits-herop">
+            CREATED BY
+            <br><br>
+            REINIER MARTIN
+            <br>
+            UX STUDIO
+            <br><br>
+            <a href="https://www.reiniermartin.com/">www.reiniermartin.com</a>
+          </div>
+          <div class="credits-roles align-left">
+            <div>
+              Pixel art
+              <br><br>
+              Design
+              <br><br>
+              Development
+            </div>
+            <div>
+              Eva Kuus
+              <br><br>
+              Reinier vd Bos
+              <br><br>
+              Esther Bauzou
+            </div>
+          </div>
+        </div>
+
       </div>
     </div>
 

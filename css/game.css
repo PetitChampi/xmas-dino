@@ -25,6 +25,10 @@ body {
 img {
   max-width: 100%;
 }
+a {
+  text-decoration: none;
+  color: inherit;
+}
 
 /* ---------- utils */
 
@@ -187,6 +191,7 @@ img {
 .select-avatar-intro-label {
   font-size: .75em;
   margin-top: 1.5rem;
+  line-height: 160%;
 }
 
 .select-avatar-grid {
@@ -287,6 +292,7 @@ img {
   margin: 1.5em 0 2em;
 }
 .end-screen-links {
+  margin-top: 2em;
   display: flex;
   flex-direction: column;
   gap: 1.25em;
@@ -307,6 +313,21 @@ img {
 }
 .end-screen-small-links .small-link:hover {
   color: black;
+}
+.end-screen-share {
+  padding-bottom: 1.5em;
+}
+.credits-herop {
+  font-size: .75em;
+  line-height: 160%;
+  margin: 2rem 0 3.25rem;
+}
+.credits-roles {
+  display: flex;
+  gap: 3em;
+  text-transform: uppercase;
+  font-size: .625em;
+  line-height: 160%;
 }
 .game-overlay {
   position: absolute;
