@@ -232,7 +232,7 @@ a {
   position: relative;
 }
 .world {
-  overflow: hidden;
+  /* overflow: hidden; */
   position: relative;
 }
 .score {
@@ -361,13 +361,19 @@ a {
   bottom: 0;
   left: calc(var(--left) * 1%);
 }
-.dino {
-  --bottom: 0;
-  --height: 30;
+.dino-container {
+  --bottom: 5;
+  --height: 20;
   position: absolute;
   left: 1%;
   height: calc(var(--height) * 1%);
   bottom: calc(var(--bottom) * 1%);
+  display: flex;
+  /* background-color: brown; */
+}
+.dino {
+  transform: scale(1.5);
+
 }
 .cactus {
   position: absolute;

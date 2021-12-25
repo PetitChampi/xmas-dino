@@ -3,6 +3,7 @@ import { incrementCustomProperty, getCustomProperty, setCustomProperty } from ".
 const avatar = localStorage.getItem("avatar")
 
 const dinoElem = document.querySelector("[data-dino]")
+const dinoContainerElem = document.querySelector("[data-dino-container]")
 const JUMP_SPEED = .45
 const GRAVITY = .0015
 // alternate the dino images
@@ -24,15 +25,17 @@ let isDucking
 let dinoFrame
 let currentFrameTime
 let yVelocity
+let hasLost
 
 export function setupDino() {
   isJumping = false
   isDucking = false
+  hasLost = false
   dinoFrame = 0
   currentFrameTime = 0
   yVelocity = 0
-  setCustomProperty(dinoElem, "--bottom", 0)
-  setCustomProperty(dinoElem, "--height", 30)
+  setCustomProperty(dinoContainerElem, "--bottom", 5)
+  setCustomProperty(dinoContainerElem, "--height", 20)
   // removing the listeners in case of a reset after lost game, to avoid duplicating it
   document.removeEventListener("keydown", onJump)
   document.removeEventListener("keydown", onDuck)
@@ -53,11 +56,12 @@ export function updateDino(delta, speedScale) {
 }
 
 export function getDinoRect() {
-  return dinoElem.getBoundingClientRect()
+  return dinoContainerElem.getBoundingClientRect()
 }
 
 export function setDinoLose() {
   dinoElem.src = `imgs/${avatar}/${avatar}-stationary.png`
+  hasLost = true
 }
 
 function handleRun(delta, speedScale) {
@@ -83,10 +87,10 @@ function handleRun(delta, speedScale) {
 function handleJump(delta) {
   if (!isJumping) return
 
-  incrementCustomProperty(dinoElem, "--bottom", yVelocity * delta)
+  incrementCustomProperty(dinoContainerElem, "--bottom", yVelocity * delta)
   
-  if (getCustomProperty(dinoElem, "--bottom") <= 0) {
-    setCustomProperty(dinoElem, "--bottom", 0)
+  if (getCustomProperty(dinoContainerElem, "--bottom") <= 5) {
+    setCustomProperty(dinoContainerElem, "--bottom", 5)
     isJumping = false
   }
 
@@ -107,18 +111,18 @@ function onJump(e) {
 function onDuck(e) {
   if ((e.code !== "ArrowDown" &&
       e.target !== duckElem) ||
-      isJumping) return
+      isJumping || hasLost) return
 
   if (e.type == "keydown" ||
       e.type == "mousedown" ||
       e.type == "touchstart") {
-    setCustomProperty(dinoElem, "--height", 18)
+    setCustomProperty(dinoContainerElem, "--height", 12)
     isDucking = true
   }
   if (e.type == "keyup" ||
       e.type == "mouseup" ||
       e.type == "touchend") {
-    setCustomProperty(dinoElem, "--height", 30)
+    setCustomProperty(dinoContainerElem, "--height", 20)
     isDucking = false
   }
 }
