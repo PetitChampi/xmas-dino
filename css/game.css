@@ -232,7 +232,7 @@ a {
   position: relative;
 }
 .world {
-  /* overflow: hidden; */
+  overflow: hidden;
   position: relative;
 }
 .score {
