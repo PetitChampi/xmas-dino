@@ -32,7 +32,7 @@ if (!isset($nameExists)) {
   $stmt->execute();
 } else {
   foreach ($dbData as $item) {
-    if ($item["nickname"] == $nickname && $score > $item["nickname"]) {
+    if ($item["nickname"] == $nickname && $score > $item["score"]) {
       $query = "UPDATE scores
       SET score = ?, avatar = ?
       WHERE nickname = ?";
