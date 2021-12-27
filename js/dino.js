@@ -60,7 +60,7 @@ export function getDinoRect() {
 }
 
 export function setDinoLose() {
-  dinoElem.src = `imgs/${avatar}/${avatar}-stationary.png`
+  dinoElem.src = `imgs/${avatar}/${avatar}-shock.png`
   hasLost = true
 }
 
