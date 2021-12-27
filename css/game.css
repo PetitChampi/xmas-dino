@@ -75,7 +75,7 @@ a {
 }
 .popup {
   background-color: var(--main-color);
-  padding: 20px;
+  padding: 20px 20px 30px;
   border: 4px solid white;
   border-radius: 5px;
 }
@@ -115,16 +115,18 @@ a {
 }
 .team-picture {
   width: 100%;
-  height: 200px;
+  max-width: 372px;
+  margin: 0 auto;
   max-height: 50vh;
   overflow: hidden;
-  display: flex;
-  align-items: center;
-  margin-bottom: 30px;
+  display: block;
 }
 .team-picture-img {
   display: inline-block;
   width: 100%;
+}
+.headline.holidays {
+  margin-bottom: 1.25em;
 }
 .welcome-signature {
   font-size: .875em;
@@ -140,10 +142,9 @@ a {
   flex-direction: column;
   align-items: center;
   padding: 30px;
-  background-image: url('../imgs/snowflake.png');
+  background-image: url('../imgs/background-snowflakes-transparent.png');
   background-size: 100px;
   background-position: center;
-  background-repeat: space;
 }
 
 .select-name-welcome {
@@ -200,7 +201,7 @@ a {
   justify-content: center;
   gap: 10px;
   width: 100%;
-  margin-bottom: 3.75em;
+  margin-bottom: 1.5em;
 }
 .avatar-grid-item {
   flex: 0 1 30%;
@@ -209,7 +210,6 @@ a {
   border-radius: 10px;
   display: flex;
   overflow: hidden;
-  padding: 10px;
 }
 .avatar-name {
   font-size: .625em;
@@ -362,18 +362,19 @@ a {
   left: calc(var(--left) * 1%);
 }
 .dino-container {
-  --bottom: 5;
-  --height: 20;
+  --bottom: 0;
+  --height: 30;
   position: absolute;
   left: 1%;
   height: calc(var(--height) * 1%);
   bottom: calc(var(--bottom) * 1%);
+  width: 4%;
   display: flex;
-  /* background-color: brown; */
+  justify-content: center;
 }
 .dino {
-  transform: scale(1.5);
-
+  max-width: unset;
+  object-fit: cover;
 }
 .cactus {
   position: absolute;

@@ -18,6 +18,7 @@ let avatar = localStorage.getItem("avatar") || "reinier"
 input.value = nickname
 nameLine.innerText = nickname
 initAvatar(avatar)
+localStorage.setItem("avatar", avatar)
 
 reinier.addEventListener("click", chooseAvatar)
 esther.addEventListener("click", chooseAvatar)
