@@ -15,6 +15,7 @@
 * {
   box-sizing: border-box;
   margin: 0;
+  -webkit-tap-highlight-color: rgba(0,0,0,0);
 }
 body {
   margin: 0;
@@ -363,7 +364,7 @@ a {
 }
 .dino-container {
   --bottom: 0;
-  --height: 30;
+  --height: 29;
   position: absolute;
   left: 3%;
   height: calc(var(--height) * 1%);

@@ -35,7 +35,7 @@ export function setupDino() {
   currentFrameTime = 0
   yVelocity = 0
   setCustomProperty(dinoContainerElem, "--bottom", 0)
-  setCustomProperty(dinoContainerElem, "--height", 30)
+  setCustomProperty(dinoContainerElem, "--height", 29)
   // removing the listeners in case of a reset after lost game, to avoid duplicating it
   document.removeEventListener("keydown", onJump)
   document.removeEventListener("keydown", onDuck)
@@ -122,7 +122,7 @@ function onDuck(e) {
   if (e.type == "keyup" ||
       e.type == "mouseup" ||
       e.type == "touchend") {
-    setCustomProperty(dinoContainerElem, "--height", 30)
+    setCustomProperty(dinoContainerElem, "--height", 29)
     isDucking = false
   }
 }
