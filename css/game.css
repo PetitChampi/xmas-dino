@@ -261,6 +261,10 @@ a {
   padding: 1rem;
   border-radius: 20px;
 }
+.controls-btn:active {
+  box-shadow: none;
+  transform: translateY(4px);
+}
 .controls-char {
   pointer-events: none;
   font-size: 1.25em;
