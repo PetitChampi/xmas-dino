@@ -371,10 +371,13 @@ a {
   width: 4%;
   display: flex;
   justify-content: center;
+  /* background-color: violet; */
 }
 .dino {
+  flex-shrink: 0;
   max-width: unset;
   object-fit: cover;
+  /* background-color: rgba(0, 0, 0, .5); */
 }
 
 .tree,
