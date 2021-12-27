@@ -40,17 +40,36 @@ function createObstacle() {
   const cactus = document.createElement("img")
   cactus.dataset.cactus = true
   cactus.dataset.obstacle = true
-  if (Math.floor(Math.random() * 2) == 0) cactus.src = "imgs/obstacle-tree-decorated.png"
-  else cactus.src = "imgs/obstacle-tree-naked.png"
-  cactus.classList.add("cactus")
+  switch(Math.floor(Math.random() * 4)) {
+    case 0:
+      cactus.src = "imgs/obstacle-tree-decorated.png"
+      cactus.classList.add("tree")
+      break;
+    case 1:
+      cactus.src = "imgs/obstacle-tree-naked.png"
+      cactus.classList.add("tree")
+      break;
+    case 2:
+      cactus.src = "imgs/obstacle-candycane.png"
+      cactus.classList.add("cane")
+      break;
+    default:
+      cactus.src = "imgs/obstacle-snowman.png"
+      cactus.classList.add("snowman")
+  }
   setCustomProperty(cactus, "--left", 100)
 
   const ptero = document.createElement("img")
   ptero.dataset.ptero = true
   ptero.dataset.obstacle = true
-  if (Math.floor(Math.random() * 2) == 0) ptero.src = "imgs/obstacle-gift.png"
-  else ptero.src = "imgs/obstacle-reindeer.png"
-  ptero.classList.add("ptero")
+  if (Math.floor(Math.random() * 2) == 0) {
+    ptero.src = "imgs/obstacle-gift.png"
+    ptero.classList.add("gift")
+  }
+  else {
+    ptero.src = "imgs/obstacle-reindeer.png"
+    ptero.classList.add("reindeer")
+  }
   setCustomProperty(ptero, "--left", 100)
 
   if (Math.floor(Math.random() * 2) == 0) worldElem.append(cactus)

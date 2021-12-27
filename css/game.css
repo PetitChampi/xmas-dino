@@ -365,7 +365,7 @@ a {
   --bottom: 0;
   --height: 30;
   position: absolute;
-  left: 1%;
+  left: 3%;
   height: calc(var(--height) * 1%);
   bottom: calc(var(--bottom) * 1%);
   width: 4%;
@@ -376,16 +376,30 @@ a {
   max-width: unset;
   object-fit: cover;
 }
-.cactus {
+
+.tree,
+.snowman {
   position: absolute;
   left: calc(var(--left) * 1%);
-  height: 30%;
+  height: 28%;
   bottom: 0;
 }
-.ptero {
+.cane {
+  position: absolute;
+  left: calc(var(--left) * 1%);
+  height: 23%;
+  bottom: 0;
+}
+.reindeer {
   position: absolute;
   left: calc(var(--left) * 1%);
   height: 25%;
+  bottom: 20%;
+}
+.gift {
+  position: absolute;
+  left: calc(var(--left) * 1%);
+  height: 13%;
   bottom: 20%;
 }
 
