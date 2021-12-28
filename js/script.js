@@ -7,6 +7,9 @@ const avatar = localStorage.getItem("avatar")
 let highScore = localStorage.getItem("score")
 
 console.log(nickname + " + " + avatar)
+document.addEventListener('visibilitychange', () => {
+  console.log(document.visibilityState);
+})
 
 if (!nickname || !avatar) {
   window.location.replace("index.html")
