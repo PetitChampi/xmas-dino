@@ -7,9 +7,6 @@ const avatar = localStorage.getItem("avatar")
 let highScore = localStorage.getItem("score")
 
 console.log(nickname + " + " + avatar)
-document.addEventListener('visibilitychange', () => {
-  console.log(document.visibilityState);
-})
 
 if (!nickname || !avatar) {
   window.location.replace("index.html")
@@ -25,6 +22,7 @@ const hiScoreElem = document.querySelector("[data-hiscore")
 const nicknameElem = document.querySelector("[data-nickname")
 const overlayElem = document.querySelector("[data-overlay")
 const startScreenElem = document.querySelector("[data-start-screen")
+
 // end screen elems
 const endScreenElem = document.querySelector("[data-end-screen")
 const endScreenGameoverElem = document.querySelector("[data-end-screen-gameover")
@@ -35,7 +33,7 @@ const closeBoardElem = document.querySelectorAll("[data-close-board")
 const seeBoardElem = document.querySelector("[data-view-scoreboard")
 const creditsBtnElem = document.querySelector("[data-credits")
 const shareBtnElem = document.querySelector("[data-share")
-//
+
 const scoreLineElem = document.querySelector("[data-score-line")
 const controlsElem = document.querySelector("[data-controls")
 const restartElem = document.querySelectorAll("[data-restart")
@@ -45,6 +43,9 @@ nicknameElem.innerText = nickname
 
 setPixelToWorldScale()
 window.addEventListener("resize", setPixelToWorldScale)
+document.addEventListener('visibilitychange', () => {
+  if (document.visibilityState == 'hidden') documentHidden = true
+})
 document.addEventListener("keydown", handleStart, { once: true })
 document.addEventListener("touchstart", handleStart, { once: true })
 document.addEventListener("mousedown", handleStart, { once: true })
@@ -76,6 +77,8 @@ closeBoardElem.forEach( elem => {
 
 setupGround()
 
+// let paused
+let documentHidden
 let lastTime
 let speedScale
 let score
@@ -87,12 +90,15 @@ function update(time) {
   }
   const delta = time - lastTime
 
+  if (documentHidden) return handleLose()
+  // if (paused) return
   updateGround(delta, speedScale)
   updateDino(delta, speedScale)
   updateObstacle(delta, speedScale)
   updateSpeedScale(delta)
   updateScore(delta)
   if (checkLose()) return handleLose()
+  
 
   lastTime = time
   window.requestAnimationFrame(update)
@@ -125,6 +131,8 @@ function handleStart(e) {
   lastTime = null
   speedScale = 1
   score = 0
+  // paused = false
+  documentHidden = false
   setupGround()
   setupDino()
   setupObstacle()
@@ -244,3 +252,12 @@ function getScoreboard() {
     }
   }
 }
+
+// pauseElem.addEventListener('click', () => {
+//   paused = true
+// })
+// resumeElem.addEventListener('click', () => {
+//   paused = false
+//   lastTime = null
+//   window.requestAnimationFrame(update)
+// })
