@@ -412,11 +412,33 @@ a {
 
 /* ---------- scoreboard */
 
+.scoreboard-container {
+  position: relative;
+}
 .scoreboard {
   margin: 1.5em 0 1.75em;
   text-align: left;
   line-height: 120%;
   width: 100%;
+
+  display: block;
+  height: 16em;
+  overflow-y: auto;
+  padding: 12px 0;
+}
+.scoreboard-scrollshadow {
+  height: 20px;
+  width: 100%;
+  position: absolute;
+  z-index: 1;
+}
+.scoreboard-scrollshadow.top {
+  top: -1px;
+  background: linear-gradient(var(--main-color), transparent);
+}
+.scoreboard-scrollshadow.bottom {
+  bottom: 0;
+  background: linear-gradient(transparent, var(--main-color));
 }
 .scoreboard th,
 .scoreboard td {
@@ -429,9 +451,6 @@ a {
   white-space: nowrap;
   text-overflow: ellipsis;
 }
-.scoreboard th {
-  background-color: linen;
-}
 .score-highlighted {
-  background-color: burlywood;
+  color: white;
 }

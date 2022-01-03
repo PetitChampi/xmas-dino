@@ -47,7 +47,7 @@ if (!isset($nameExists)) {
 $deleteQuery = "DELETE FROM scores
 WHERE id NOT IN
 (
-  SELECT * FROM (SELECT id FROM scores ORDER BY score DESC LIMIT 20) AS temp
+  SELECT * FROM (SELECT id FROM scores ORDER BY score DESC LIMIT 100) AS temp
 )";
 
 if (mysqli_query($conn, $deleteQuery)) {
