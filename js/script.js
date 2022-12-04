@@ -77,7 +77,6 @@ closeBoardElem.forEach( elem => {
 
 setupGround()
 
-// let paused
 let documentHidden
 let lastTime
 let speedScale
@@ -91,7 +90,6 @@ function update(time) {
   const delta = time - lastTime
 
   if (documentHidden) return handleLose()
-  // if (paused) return
   updateGround(delta, speedScale)
   updateDino(delta, speedScale)
   updateObstacle(delta, speedScale)
@@ -131,7 +129,6 @@ function handleStart(e) {
   lastTime = null
   speedScale = 1
   score = 0
-  // paused = false
   documentHidden = false
   setupGround()
   setupDino()
@@ -172,17 +169,6 @@ function handleLose() {
     hiScoreElem.textContent = highScore
     getScoreboard()
   }, 50)
-  // setTimeout(() => {
-  //   let scoreboardRows = Array.from(scoreboardBody.getElementsByTagName("tr"))
-  //   scoreboardRows.forEach(row => {
-  //     if (row.innerText.includes(nickname)
-  //     && row.innerText.includes(score)
-  //     && row.innerText.includes(avatar)) {
-  //       row.classList.add("score-highlighted")
-  //       console.log('added class')
-  //     }
-  //   })
-  // }, 60)
 }
 
 function setPixelToWorldScale() {
@@ -202,62 +188,45 @@ function setPixelToWorldScale() {
 // -------------------------------------------------------
 
 function postScore() {
-  let data = { nickname: nickname, score: Math.floor(score), avatar: avatar }
-  data = JSON.stringify(data)
-  let ajax = new XMLHttpRequest()
-  let method = "POST"
-  let url = "php/register-score.php"
-  let asynchronous = true
+  const scoreData = JSON.stringify({
+    nickname: nickname,
+    score: Math.floor(score),
+    avatar: avatar
+  })
+  const requestOptions = {
+    method: "POST",
+    headers: { "Content-Type": "application/json;charset=UTF-8" },
+    body: scoreData,
+};
 
-  ajax.open(method, url, asynchronous)
-  ajax.setRequestHeader("Content-Type", "application/json;charset=UTF-8")
-  ajax.send(data)
-
-  // ajax.onreadystatechange = function() {
-  //   if (this.readyState == 4 && this.status == 200) {
-  //     console.log(this.responseText)
-  //   }
-  // }
+  fetch("php/register-score.php", requestOptions)
+    .then(res => res.text())
+    .then(data => {
+      console.log(data)
+    })
+    .catch((err) => {
+      console.error(`[CUSTOM ERROR]: ${err.message}`);
+    });
+    // charset header?
 }
 
 function getScoreboard() {
-  let ajax = new XMLHttpRequest()
-  let method = "GET"
-  let url = "php/scoreboard.php"
-  let asynchronous = true
-
-  ajax.open(method, url, asynchronous)
-  ajax.send()
-
-  ajax.onreadystatechange = function() {
-    if (this.readyState == 4 && this.status == 200) {
-      let data = JSON.parse(this.responseText)
-
-      let html = ""
+  fetch("php/scoreboard.php")
+    .then(res => res.json())
+    .then(data => {
+      let scoreboardContents = ""
       
-      for (let i = 0; i < data.length; i++) {
-        let nickname = data[i].nickname
-        // let character = data[i].avatar
-        let score = data[i].score
+      Object.values(data).forEach((item, index) => {
+        scoreboardContents += `<tr>
+          <td>${String(index + 1).padStart(2, '0')}.</td>
+          <td class="name">${item.nickname}</td>
+          <td class="align-right">${item.score}</td>
+        </tr>`
+      });
 
-        html += "<tr>"
-        html += `<td>${String(i + 1).padStart(2, '0')}.</td>`
-        html += `<td class="name">${nickname}</td>`
-        // html += `<td><img style="object-fit:contain; height:30px; width:100%; text-align:center;" src="imgs/${character}/${character}-stationary.png""></td>`
-        html += `<td class="align-right">${score}</td>`
-        html += "</tr>"
-      }
-
-      scoreboardBody.innerHTML = html
-    }
-  }
+      scoreboardBody.innerHTML = scoreboardContents
+    })
+    .catch((err) => {
+      console.error(`[CUSTOM ERROR]: ${err.message}`);
+    });
 }
-
-// pauseElem.addEventListener('click', () => {
-//   paused = true
-// })
-// resumeElem.addEventListener('click', () => {
-//   paused = false
-//   lastTime = null
-//   window.requestAnimationFrame(update)
-// })

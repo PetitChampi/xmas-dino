@@ -45,8 +45,7 @@ if (!isset($nameExists)) {
 
 // Delete all records below the 20 highest scores
 $deleteQuery = "DELETE FROM scores
-WHERE id NOT IN
-(
+WHERE id NOT IN (
   SELECT * FROM (SELECT id FROM scores ORDER BY score DESC LIMIT 100) AS temp
 )";
 
